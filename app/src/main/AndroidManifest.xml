@@ -11,7 +11,7 @@
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
 
     <application
-        android:name=".base.HaveBeenApplication"
+        android:name="com.globe.havebeen.HaveBeenApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -44,7 +44,7 @@
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
 
-        <activity android:name=".splash.SplashActivity">
+        <activity android:name="com.globe.havebeen.view.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -52,7 +52,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".login.LoginActivity">
+        <activity android:name="com.globe.havebeen.view.login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
@@ -61,7 +61,7 @@
                 <data android:host="globe.com" android:scheme="https"/>
             </intent-filter>
         </activity>
-        <activity android:name=".main.MainActivity"/>
+        <activity android:name="com.globe.havebeen.view.main.MainActivity"/>
 
 
 
