@@ -18,9 +18,11 @@ import com.globe.havebeen.R
 import com.globe.havebeen.view.login.enums.LoginType
 import com.globe.havebeen.view.login.presenter.LoginContract
 import com.google.android.gms.common.SignInButton
+import com.google.firebase.auth.FirebaseAuth
 import com.kakao.network.ErrorResult
 import com.kakao.usermgmt.UserManagement
 import com.kakao.usermgmt.callback.UnLinkResponseCallback
+import kotlinx.android.synthetic.main.fragment_login_select.*
 
 /**
  * Created by baeminsu on 25/08/2018.
@@ -33,6 +35,7 @@ class LoginSelectFragment() : Fragment(), LoginContract.ILoginSelectView {
     private lateinit var defaultFragmentListener: LoginContract.DefaultFragmentListener
     private lateinit var facebookLoginBtn: LoginButton
     private lateinit var googleLoginBtn: SignInButton
+    var buttonEnableFlag = true
 
 
     override lateinit var presenter: LoginContract.ILoginSelectPresenter
@@ -50,7 +53,7 @@ class LoginSelectFragment() : Fragment(), LoginContract.ILoginSelectView {
             val googleLoginFakeBtn: Button = findViewById(R.id.googleLoginFakeBtn)
             val facebookLoginFakeBtn: Button = findViewById(R.id.facebookLoginFakeBtn)
             val kakaoLoginFakeBtn: Button = findViewById(R.id.kakaoLoginFakeBtn)
-            val defaultLoginBtn : Button = findViewById(R.id.defaultLoginBtn)
+            val defaultLoginBtn: Button = findViewById(R.id.defaultLoginBtn)
             //fake btn
             googleLoginBtn = findViewById(R.id.googleLoginBtn)
             facebookLoginBtn = findViewById(R.id.facebookLoginBtn)
@@ -136,4 +139,23 @@ class LoginSelectFragment() : Fragment(), LoginContract.ILoginSelectView {
     }
 
 
+    override fun onResume() {
+        super.onResume()
+        if (FirebaseAuth.getInstance().currentUser != null) {
+            FirebaseAuth.getInstance().currentUser!!.sendEmailVerification()
+                    .addOnCompleteListener {
+                        if (it.isSuccessful) {
+                            Log.e("인증성공", "성공")
+                            loginTest.text = "로그인 인증 성공"
+                        } else {
+                            Log.e("인증실패", "실패")
+                            loginTest.text = "로그인 인증 실패"
+                        }
+                    }
+        }
+    }
+
+    fun buttonEnableControl() {
+
+    }
 }

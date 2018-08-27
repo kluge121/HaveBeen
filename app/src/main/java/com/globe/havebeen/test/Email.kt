@@ -16,27 +16,16 @@ class Email {
 
 
     fun emailSend(email: String, context: Context) {
-
-        val actionCodeSettings: ActionCodeSettings =
-                ActionCodeSettings.newBuilder()
-                        .setUrl("https://globe.page.link/register_auth")
-                        .setHandleCodeInApp(true)
-                        .setIOSBundleId("com.example.ios")
-                        .setAndroidPackageName("com.globe.havebeen",
-                                true, "12")
-                        .build()
-
-
         val auth = FirebaseAuth.getInstance()
-        auth.sendSignInLinkToEmail(email, actionCodeSettings)
-                .addOnCompleteListener {
-                    if (it.isSuccessful) {
-                        Log.e("인증메일전송", "인증메일")
-                    }
-                }
-        TraySharedPreference(context).put(EMAIL_CHECK_TMP_STROE, email)
-    }
+        val user = auth.currentUser
 
+        user!!.sendEmailVerification()
+                .addOnCompleteListener {
+                    if (it.isSuccessful)
+                        Log.e("이메일 보내", "빨리 보내")
+                }
+    }
+    
     fun emailCheck(intent: Intent, context: Context) {
 
         val auth = FirebaseAuth.getInstance()

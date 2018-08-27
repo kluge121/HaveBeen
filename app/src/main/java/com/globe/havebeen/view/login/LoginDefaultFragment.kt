@@ -6,10 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import android.widget.ToggleButton
 import com.globe.havebeen.R
 import com.globe.havebeen.test.Email
 import com.globe.havebeen.view.login.presenter.LoginContract
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_default_sign.*
 
@@ -18,28 +22,27 @@ import kotlinx.android.synthetic.main.fragment_default_sign.*
  * Created by baeminsu on 26/08/2018.
  */
 
-class LoginDefaultFragment: Fragment(), LoginContract.IDefaultView {
+class LoginDefaultFragment : Fragment(), LoginContract.IDefaultView {
     override lateinit var presenter: LoginContract.IDefaultPresenter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val root = inflater.inflate(
                 R.layout.fragment_default_sign,
                 container, false)
-        with(root)  {
+        with(root) {
 
-            val loginDefaultSubmitButton : TextView = findViewById(R.id.loginDefaultSubmitButton)
-            val loginDefaultForgetText : TextView = findViewById(R.id.loginDefaultForgetText)
-            val loginDefaultSignUpToggle : ToggleButton = findViewById(R.id.loginDefaultSignUpToggle)
+            val loginDefaultSubmitButton: TextView = findViewById(R.id.loginDefaultSubmitButton)
+            val loginDefaultForgetText: TextView = findViewById(R.id.loginDefaultForgetText)
+            val loginDefaultSignUpToggle: ToggleButton = findViewById(R.id.loginDefaultSignUpToggle)
             loginDefaultSubmitButton.setOnClickListener {
-                if(loginDefaultSignUpToggle.isChecked) {
-                    // 로그인
-                    loginSubmit()
-                } else {
+                if (loginDefaultSignUpToggle.isChecked) {
                     // 회원가입
                     registerSubmit()
+                } else {
+                    // 로그인
+                    loginSubmit()
                 }
             }
-
             loginDefaultForgetText.setOnClickListener {
                 FirebaseAuth.getInstance().signOut()
             }
@@ -58,27 +61,40 @@ class LoginDefaultFragment: Fragment(), LoginContract.IDefaultView {
     }
 
     override fun loginSubmit() {
-
         val auth = FirebaseAuth.getInstance()
         val email = loginDefaultIdEdit.text.toString()
         val password = loginDefaultPasswordEdit.text.toString()
-
-
-
-
     }
 
     override fun registerSubmit() {
+        loginDefaultSubmitButton.isEnabled = false
+        if (!verifyLocalCheck()) {
+            loginDefaultSubmitButton.isEnabled = true
+            return
+        }
 
         val auth = FirebaseAuth.getInstance()
+
         val email = loginDefaultIdEdit.text.toString()
         val password = loginDefaultPasswordEdit.text.toString()
-        Email().emailSend(email,context!!)
 
+        auth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(activity!!) { task ->
+                    if (task.isSuccessful) {
+                        Toast.makeText(activity,
+                                "${auth.currentUser!!} ", Toast.LENGTH_LONG).show()
+                        Email().emailSend(email, context!!)
+                    } else {
+                        task.exception?.printStackTrace()
+                        Toast.makeText(activity,
+                                "${task.exception?.message} ", Toast.LENGTH_LONG).show()
+                    }
+                }
+        loginDefaultSubmitButton.isEnabled = false
     }
 
     override fun changeLoginSignUp(isChecked: Boolean) {
-        if(isChecked) {
+        if (isChecked) {
             // 로그인 -> 회원가입
             loginDefaultSubmitButton.text = getString(R.string.login_default_submit_signup_text)
             loginDefaultForgetText.visibility = View.GONE
