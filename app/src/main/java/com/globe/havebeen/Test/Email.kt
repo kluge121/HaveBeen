@@ -17,6 +17,7 @@ class Email {
 
 
     fun emailSend(email: String, context: Context) {
+
         val actionCodeSettings: ActionCodeSettings =
                 ActionCodeSettings.newBuilder()
                         .setUrl("https://globe.page.link/register_auth")
