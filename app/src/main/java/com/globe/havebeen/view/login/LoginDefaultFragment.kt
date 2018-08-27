@@ -17,6 +17,7 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthActionCodeException
+import com.google.firebase.auth.FirebaseAuthEmailException
 import com.kakao.util.exception.KakaoException
 import kotlinx.android.synthetic.main.fragment_default_sign.*
 
@@ -92,8 +93,6 @@ class LoginDefaultFragment : Fragment(), LoginContract.IDefaultView {
                         Toast.makeText(activity,
                                 "${task.exception?.message} ", Toast.LENGTH_LONG).show()
                     }
-                }.addOnFailureListener {
-                    
                 }
         loginDefaultSubmitButton.isEnabled = false
     }

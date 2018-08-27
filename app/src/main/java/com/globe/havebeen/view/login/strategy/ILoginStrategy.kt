@@ -9,7 +9,6 @@ import android.support.v4.app.Fragment
 interface ILoginStrategy {
 
     fun login(fragment: Fragment)
-    fun onLoginSuccess()
     fun onLoginFailure(exception: Exception?): String
     fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent)
 

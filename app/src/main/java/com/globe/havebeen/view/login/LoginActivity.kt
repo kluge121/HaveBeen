@@ -20,7 +20,7 @@ class LoginActivity : BaseActivity(), LoginContract.ILoginView, LoginContract.De
 
     override lateinit var presenter: LoginContract.ILoginPresenter
     private lateinit var loginSelectPresenter: LoginSelectPresenter
-    private  var defaultPresenter: LoginDefaultPresenter? = null
+    private var defaultPresenter: LoginDefaultPresenter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

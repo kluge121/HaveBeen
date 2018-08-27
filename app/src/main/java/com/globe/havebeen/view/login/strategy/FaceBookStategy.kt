@@ -44,10 +44,6 @@ class FaceBookStategy : ILoginStrategy {
 
     }
 
-    override fun onLoginSuccess() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
     override fun onLoginFailure(exception: Exception?): String {
         return ""
 //        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
