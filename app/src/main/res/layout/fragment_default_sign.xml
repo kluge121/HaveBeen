@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_background">
+
+    <ImageView
+        android:id="@+id/loginDefaultLogoImage"
+        android:src="@drawable/kakao_default_profile_image"
+        android:layout_width="164dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.13" />
+
+    <LinearLayout
+        android:id="@+id/loginDefaultIdContainer"
+        android:layout_width="308dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="60dp"
+        android:background="#4dffd0ca"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginDefaultLogoImage">
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_margin="20dp" />
+
+        <EditText
+            android:id="@+id/loginDefaultIdEdit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:hint="@string/login_default_id_hint"
+            android:singleLine="true"
+            android:textColorHint="#ffd0ca"
+            android:textSize="12sp"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/loginDefaultPasswordContainer"
+        android:layout_width="308dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="5dp"
+        android:background="#4dffd0ca"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/loginDefaultIdContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_margin="20dp" />
+
+        <EditText
+            android:id="@+id/loginDefaultPasswordEdit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:hint="@string/login_default_password_hint"
+            android:textColorHint="#ffd0ca"
+            android:textSize="12sp"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/loginDefaultSubmitButton"
+        android:layout_width="308dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="18dp"
+        android:background="@android:color/white"
+        android:gravity="center"
+        android:text="@string/login_default_submit_login_text"
+        android:textAlignment="center"
+        android:textColor="#fc7665"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginDefaultPasswordContainer" />
+
+    <TextView
+        android:id="@+id/loginDefaultForgetText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:text="@string/forget_password"
+        android:textColor="@color/white"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginDefaultSubmitButton" />
+
+    <ToggleButton
+        android:id="@+id/loginDefaultSignUpToggle"
+        android:layout_width="192dp"
+        android:layout_height="35dp"
+        android:background="@drawable/login_toggle_background"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:layout_marginTop="90dp"
+        android:textOff=""
+        android:textOn=""
+        style="?android:attr/borderlessButtonStyle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginDefaultSubmitButton" />
+
+</android.support.constraint.ConstraintLayout>

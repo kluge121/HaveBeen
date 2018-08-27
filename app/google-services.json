@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "66391131211",
+    "firebase_url": "https://havebeen-f77da.firebaseio.com",
+    "project_id": "havebeen-f77da",
+    "storage_bucket": "havebeen-f77da.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:66391131211:android:dda27f04c8034a35",
+        "android_client_info": {
+          "package_name": "com.globe.havebeen"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "66391131211-4fbldfa3q25ikqpfnkdp8u0n7rnesd24.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.globe.havebeen",
+            "certificate_hash": "672b18175d66b88be6dc8c115d0c24bbeb0bcfef"
+          }
+        },
+        {
+          "client_id": "66391131211-qg6pufm1h92am1085aipfl0fn40fruj3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCImxWqeYiFAVRTt2UnWd7DqgN7kPhOhcI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "66391131211-qg6pufm1h92am1085aipfl0fn40fruj3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

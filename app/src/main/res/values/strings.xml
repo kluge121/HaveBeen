@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">HaveBeen</string>
+
+
+    <string name="google_android_api_key">AIzaSyCImxWqeYiFAVRTt2UnWd7DqgN7kPhOhcI</string>
+
+    <!--Api-Key-->
+    <string name="default_google_web_client_id">66391131211-qg6pufm1h92am1085aipfl0fn40fruj3.apps.googleusercontent.com</string>
+    <string name="facebook_app_id">1645429868901847</string>
+    <string name="fb_login_protocol_scheme">fb1645429868901847</string>
+    <string name="kakao_app_key">f10be103a6a67edafab70d929f5ed5ab</string>
+
+
+
+
+    <string name="summit">확인</string>
+    <string name="cancel">취소</string>
+
+
+    <!--회원가입 / 로그인-->
+    <string name="login_default_id_hint">Username/E-mail</string>
+    <string name="login_default_password_hint">password</string>
+    <string name="login_default_submit_login_text">Login</string>
+    <string name="login_default_submit_signup_text">Sign up</string>
+    <string name="forget_password">Forget your password?</string>
+
+
+</resources>
