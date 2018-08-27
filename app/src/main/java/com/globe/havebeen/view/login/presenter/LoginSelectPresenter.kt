@@ -32,7 +32,8 @@ class LoginSelectPresenter(val loginSelectView: LoginContract.ILoginSelectView)
             LoginType.FACEBOOK -> {
                 loginStrategy = FaceBookStategy()
             }
-            LoginType.LOCAL -> {
+            else -> {
+
             }
         }
         loginStrategy.login(loginSelectView.getFragment())

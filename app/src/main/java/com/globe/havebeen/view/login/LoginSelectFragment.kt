@@ -1,5 +1,6 @@
 package com.globe.havebeen.view.login
 
+import android.app.Activity
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
@@ -16,9 +17,12 @@ import android.widget.Toast
 import com.facebook.login.widget.LoginButton
 import com.globe.havebeen.R
 import com.globe.havebeen.view.login.enums.LoginType
+import com.globe.havebeen.view.login.presenter.KakaoLoginButton
 import com.globe.havebeen.view.login.presenter.LoginContract
+import com.globe.havebeen.view.main.MainActivity
 import com.google.android.gms.common.SignInButton
 import com.google.firebase.auth.FirebaseAuth
+import com.kakao.auth.Session.getCurrentSession
 import com.kakao.network.ErrorResult
 import com.kakao.usermgmt.UserManagement
 import com.kakao.usermgmt.callback.UnLinkResponseCallback
@@ -46,7 +50,9 @@ class LoginSelectFragment() : Fragment(), LoginContract.ILoginSelectView {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
+
         val root = inflater.inflate(R.layout.fragment_login_select, container, false)
+
         with(root) {
 
             //origin btn
@@ -57,7 +63,8 @@ class LoginSelectFragment() : Fragment(), LoginContract.ILoginSelectView {
             //fake btn
             googleLoginBtn = findViewById(R.id.googleLoginBtn)
             facebookLoginBtn = findViewById(R.id.facebookLoginBtn)
-            val kakaoLoginBtn: com.kakao.usermgmt.LoginButton = findViewById(R.id.kakaoLoginBtn)
+            val kakaoLoginBtn: KakaoLoginButton = findViewById(R.id.kakaoLoginBtn)
+            kakaoLoginBtn.setLoginResult()
 
             val loginTest: TextView = findViewById(R.id.loginTest)
 
@@ -72,6 +79,7 @@ class LoginSelectFragment() : Fragment(), LoginContract.ILoginSelectView {
             }
             facebookLoginBtn.setOnClickListener {
                 presenter.loginRequest(LoginType.FACEBOOK)
+
             }
             kakaoLoginFakeBtn.setOnClickListener {
                 presenter.loginRequest(LoginType.KAKAO)
@@ -95,6 +103,11 @@ class LoginSelectFragment() : Fragment(), LoginContract.ILoginSelectView {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (getCurrentSession().handleActivityResult(requestCode, resultCode, data)) {
+            return;
+        }
+
+
         presenter.onActivityResultForLogin(requestCode, resultCode, data)
         Log.e("리퀘스트코드", "$requestCode")
         Log.e("리줄트코드", "$resultCode")
@@ -141,6 +154,7 @@ class LoginSelectFragment() : Fragment(), LoginContract.ILoginSelectView {
 
     override fun onResume() {
         super.onResume()
+        Log.e("체크리쥼", "체크리쥼")
         if (FirebaseAuth.getInstance().currentUser != null) {
             FirebaseAuth.getInstance().currentUser!!.sendEmailVerification()
                     .addOnCompleteListener {
@@ -155,7 +169,19 @@ class LoginSelectFragment() : Fragment(), LoginContract.ILoginSelectView {
         }
     }
 
-    fun buttonEnableControl() {
+    private fun buttonEnableControl() {
+        if (buttonEnableFlag) {
+            facebookLoginFakeBtn.isEnabled = false
+            googleLoginFakeBtn.isEnabled = false
+            kakaoLoginFakeBtn.isEnabled = false
+            defaultLoginBtn.isEnabled = false
+        } else {
+            facebookLoginFakeBtn.isEnabled = true
+            googleLoginFakeBtn.isEnabled = true
+            kakaoLoginFakeBtn.isEnabled = true
+            defaultLoginBtn.isEnabled = true
+        }
+        buttonEnableFlag != buttonEnableFlag
 
     }
 }

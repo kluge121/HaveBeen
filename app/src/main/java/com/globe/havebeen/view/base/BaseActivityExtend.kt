@@ -1,11 +1,10 @@
-package com.globe.havebeen.util
+package com.globe.havebeen.view.base
 
 import android.support.annotation.IdRes
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AppCompatActivity
-import com.globe.havebeen.view.base.BaseActivity
 
 /**
  * Created by baeminsu on 25/08/2018.
