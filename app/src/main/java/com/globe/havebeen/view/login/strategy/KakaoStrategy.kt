@@ -1,5 +1,6 @@
 package com.globe.havebeen.view.login.strategy
 
+import android.app.Activity
 import android.content.Intent
 import android.support.v4.app.Fragment
 import android.util.Log
@@ -21,6 +22,12 @@ import com.kakao.util.exception.KakaoException
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.http.Body
+import retrofit2.http.Headers
+import retrofit2.http.POST
+import android.content.Context
+import com.globe.havebeen.view.main.MainActivity
+import com.google.android.gms.tasks.OnCompleteListener
 
 /**
  * Created by baeminsu on 26/08/2018.
@@ -30,7 +37,7 @@ class KakaoStrategy : ILoginStrategy {
 
     override fun login(fragment: Fragment) {
         Log.e("여기체크1", "췤췤")
-        val kakaoSessionCallback = KakaoSessionCallback()
+        val kakaoSessionCallback = KakaoSessionCallback(fragment.context!!)
         Session.getCurrentSession().addCallback(kakaoSessionCallback)
         Log.e("여기체크2", "췤췤")
 
@@ -42,7 +49,7 @@ class KakaoStrategy : ILoginStrategy {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Log.e("카톡온리줄트", "ㅋㅋㅎㅇ")
     }
 
 }
@@ -91,7 +98,7 @@ private fun getFirebaseJWT(kakaoUserProfile: MeV2Response): Task<String> {
 
 }
 
-class KakaoSessionCallback : ISessionCallback {
+class KakaoSessionCallback(val context: Context) : ISessionCallback {
 
 
     override fun onSessionOpened() {
@@ -101,6 +108,15 @@ class KakaoSessionCallback : ISessionCallback {
             override fun onSuccess(result: MeV2Response?) {
 
                 getFirebaseJWT(result!!).continueWithTask { p0 -> FirebaseAuth.getInstance().signInWithCustomToken(p0.result) }
+                        .addOnCompleteListener(OnCompleteListener {
+                            if (it.isSuccessful) {
+                                Log.e("깨독", "로그인 성공")
+                                context.startActivity(Intent(context, MainActivity::class.java))
+                                (context as Activity).finish()
+                            } else {
+                                Log.e("깨독", "로그인 실패")
+                            }
+                        })
                         .addOnCompleteListener{
                     if (it.isSuccessful) {
                         Log.e("깨독", "로그인 성공")
@@ -114,10 +130,9 @@ class KakaoSessionCallback : ISessionCallback {
             }
         })
     }
+
     override fun onSessionOpenFailed(exception: KakaoException?) {
     }
-
-
 }
 
 class FirebaseAuthToken {

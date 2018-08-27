@@ -26,7 +26,6 @@ class SplashActivity : BaseActivity(), SplashContract.ISplashView {
         presenter = SplashPresenter(this)
         Handler().postDelayed(Runnable {
             if (FirebaseAuth.getInstance().currentUser != null) {
-                Toast.makeText(this, FirebaseAuth.getInstance().currentUser?.email, Toast.LENGTH_SHORT).show()
                 startActivity(Intent(this, MainActivity::class.java))
                 finish()
             } else {
