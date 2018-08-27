@@ -35,8 +35,15 @@ class GoogleStrategy : ILoginStrategy {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun onLoginFailure() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun onLoginFailure(exception: Exception?): String {
+        return when((exception as ApiException).statusCode) {
+            14 /*인터럽트*/ -> "인터럽트걸림"
+            8 /*내부오류*/ -> "내부오류남"
+            15 /*타임아웃*/ -> "타임아웃걸림"
+            16 /*취소됨*/ -> "취소됨"
+            18 /*클라이언트 사망*/ -> "클라쥬금"
+            else -> "??뭔오류냐 // 코드 : " + exception.statusCode
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
@@ -50,6 +57,7 @@ class GoogleStrategy : ILoginStrategy {
                     val account = task.getResult(ApiException::class.java)
                     firebaseAuthWithGoogle(account)
                 } catch (e: Exception) {
+
                     Log.e("구글 로그인", e.toString());
                 }
             }
@@ -65,6 +73,7 @@ class GoogleStrategy : ILoginStrategy {
                     if (it.isSuccessful) {
                         Log.d("구글 로그인", "구글 로그인 credential : success");
                     } else {
+                        Log.d("구글 로그인", onLoginFailure(it.exception))
                         Log.d("구글 로그인", "구글 로그인 credential : fail");
                     }
                 })

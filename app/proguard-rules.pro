@@ -19,3 +19,19 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+# 카카오 프로가드
+-keep class com.kakao.** { *; }
+-keepattributes Signature
+-keepclassmembers class * {
+  public static <fields>;
+  public *;
+}
+-dontwarn android.support.v4.**,org.slf4j.**,com.google.android.gms.**
+
+# dbflow
+-keep class * extends com.raizlabs.android.dbflow.config.DatabaseHolder { *; }
+
+#glide
+-keep public class * extends com.bumptech.glide.module.AppGlideModule
+-keep class com.bumptech.glide.GeneratedAppGlideModuleImpl

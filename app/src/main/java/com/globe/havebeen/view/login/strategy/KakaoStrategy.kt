@@ -4,9 +4,9 @@ import android.app.Activity
 import android.content.Intent
 import android.support.v4.app.Fragment
 import android.util.Log
+import com.globe.havebeen.data.network.kakao.KakaoAuthApi
 import com.google.android.gms.tasks.Task
-import com.globe.havebeen.util.RetrofitHelper
-import com.google.android.gms.tasks.OnCompleteListener
+import com.globe.havebeen.data.network.kakao.KakaoAuthService
 import com.google.android.gms.tasks.TaskCompletionSource
 import com.google.firebase.auth.FirebaseAuth
 import com.google.gson.GsonBuilder
@@ -27,6 +27,8 @@ import retrofit2.http.Headers
 import retrofit2.http.POST
 import android.content.Context
 import com.globe.havebeen.view.main.MainActivity
+import com.google.android.gms.tasks.OnCompleteListener
+
 /**
  * Created by baeminsu on 26/08/2018.
  */
@@ -45,8 +47,9 @@ class KakaoStrategy : ILoginStrategy {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun onLoginFailure() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun onLoginFailure(exception: Exception?): String {
+        return ""
+//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
@@ -54,6 +57,8 @@ class KakaoStrategy : ILoginStrategy {
     }
 
 }
+
+
 private fun getFirebaseJWT(kakaoUserProfile: MeV2Response): Task<String> {
 
     val source = TaskCompletionSource<String>()
@@ -76,8 +81,8 @@ private fun getFirebaseJWT(kakaoUserProfile: MeV2Response): Task<String> {
             .setLenient()
             .create().toJson(validationObject)
 
-    val kakaoAuthInterface: KakaoAuthInterface = RetrofitHelper.getKakaoLoginClient().create(KakaoAuthInterface::class.java)
-    kakaoAuthInterface.getFirebaseToken(jsonData).enqueue(object : Callback<FirebaseAuthToken> {
+    val kakaoAuthApi: KakaoAuthApi = KakaoAuthService.getKakaoLoginClient().create(KakaoAuthApi::class.java)
+    kakaoAuthApi.getFirebaseToken(jsonData).enqueue(object : Callback<FirebaseAuthToken> {
         override fun onResponse(call: Call<FirebaseAuthToken>?, response: Response<FirebaseAuthToken>?) {
             if (response?.isSuccessful!!) {
                 val firebaseAuthToken: FirebaseAuthToken = response.body()!!
@@ -87,21 +92,13 @@ private fun getFirebaseJWT(kakaoUserProfile: MeV2Response): Task<String> {
             }
 
         }
+
         override fun onFailure(call: Call<FirebaseAuthToken>?, t: Throwable?) {
             Log.e("카카오 로그인 세션 실패", "카카오 세션 콜백 실패")
         }
 
     })
     return source.task
-
-}
-
-interface KakaoAuthInterface {
-
-
-    @Headers("Content-Type: application/json")
-    @POST("/verifyKakao")
-    fun getFirebaseToken(@Body body: String): Call<FirebaseAuthToken>
 
 }
 
@@ -124,6 +121,13 @@ class KakaoSessionCallback(val context: Context) : ISessionCallback {
                                 Log.e("깨독", "로그인 실패")
                             }
                         })
+                        .addOnCompleteListener{
+                    if (it.isSuccessful) {
+                        Log.e("깨독", "로그인 성공")
+                    } else {
+                        Log.e("깨독", "로그인 실패")
+                    }
+                }
             }
             override fun onSessionClosed(errorResult: ErrorResult?) {
                 Log.e("깨독", "로그인 세션 클로즈 ${errorResult?.errorMessage}")
