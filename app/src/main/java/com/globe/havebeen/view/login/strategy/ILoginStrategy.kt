@@ -10,7 +10,7 @@ interface ILoginStrategy {
 
     fun login(fragment: Fragment)
     fun onLoginSuccess()
-    fun onLoginFailure()
+    fun onLoginFailure(exception: Exception?): String
     fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent)
 
 

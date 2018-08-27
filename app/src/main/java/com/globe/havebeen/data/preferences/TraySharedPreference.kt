@@ -1,4 +1,4 @@
-package com.globe.havebeen.util
+package com.globe.havebeen.data.preferences
 
 import android.content.Context
 import net.grandcentrix.tray.TrayPreferences

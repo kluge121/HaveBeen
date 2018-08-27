@@ -1,4 +1,4 @@
-package com.globe.havebeen.util
+package com.globe.havebeen.data.network
 
 /**
  * Created by baeminsu on 26/08/2018.

@@ -1,4 +1,4 @@
-package com.globe.havebeen.util
+package com.globe.havebeen.data.network.kakao
 
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -10,7 +10,7 @@ import retrofit2.converter.scalars.ScalarsConverterFactory
 /**
  * Created by baeminsu on 26/08/2018.
  */
-class RetrofitHelper {
+class KakaoAuthService {
 
     companion object {
 

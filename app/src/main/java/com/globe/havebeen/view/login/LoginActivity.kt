@@ -3,9 +3,9 @@ package com.globe.havebeen.view.login
 import android.os.Bundle
 import com.globe.havebeen.R
 import com.globe.havebeen.view.base.BaseActivity
-import com.globe.havebeen.util.addFragment
-import com.globe.havebeen.util.removeFragmentById
-import com.globe.havebeen.util.replaceFragment
+import com.globe.havebeen.view.base.addFragment
+import com.globe.havebeen.view.base.removeFragmentById
+import com.globe.havebeen.view.base.replaceFragment
 import com.globe.havebeen.view.login.presenter.LoginContract
 import com.globe.havebeen.view.login.presenter.LoginDefaultPresenter
 import com.globe.havebeen.view.login.presenter.LoginPresenter

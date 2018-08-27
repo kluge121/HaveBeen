@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "66391131211-08ru4g376ieuq7r7me9pavr489b9uf03.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.globe.havebeen",
+            "certificate_hash": "a2ef3e21a8a2ab48aec0e914a7bc8b8666c5521c"
+          }
+        },
+        {
           "client_id": "66391131211-qg6pufm1h92am1085aipfl0fn40fruj3.apps.googleusercontent.com",
           "client_type": 3
         }
