@@ -14,13 +14,21 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import android.content.Context
+import android.widget.Toast
+import com.globe.havebeen.view.main.MainActivity
+import com.google.firebase.auth.FirebaseAuthUserCollisionException
 
 /**
  * Created by baeminsu on 25/08/2018.
  */
 
 class GoogleStrategy : ILoginStrategy {
+
+    lateinit var context: Context
+
     override fun login(fragment: Fragment) {
+        context = fragment.context!!
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .apply {
                     requestIdToken(fragment.getString(R.string.default_google_web_client_id))
@@ -36,7 +44,7 @@ class GoogleStrategy : ILoginStrategy {
     }
 
     override fun onLoginFailure(exception: Exception?): String {
-        return when((exception as ApiException).statusCode) {
+        return when ((exception as ApiException).statusCode) {
             14 /*인터럽트*/ -> "인터럽트걸림"
             8 /*내부오류*/ -> "내부오류남"
             15 /*타임아웃*/ -> "타임아웃걸림"
@@ -47,7 +55,6 @@ class GoogleStrategy : ILoginStrategy {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
-//        Log.e("체크", FirebaseAuth.getInstance().currentUser?.email)
 
         when (requestCode) {
             LoginType.GOOGLE.type -> {
@@ -72,8 +79,15 @@ class GoogleStrategy : ILoginStrategy {
                 .addOnCompleteListener(OnCompleteListener {
                     if (it.isSuccessful) {
                         Log.d("구글 로그인", "구글 로그인 credential : success");
+                        context.startActivity(Intent(context, MainActivity::class.java))
+                        val cUser = FirebaseAuth.getInstance().currentUser
+                        userInfoStore(cUser!!.email!!, cUser.displayName!!, cUser.photoUrl.toString(), cUser.uid)
+
+
                     } else {
-                        Log.d("구글 로그인", onLoginFailure(it.exception))
+                        if (it.exception is FirebaseAuthUserCollisionException) {
+                            Toast.makeText(context, "이미 연동 및 가입된 이메일주소입니다.", Toast.LENGTH_SHORT).show()
+                        }
                         Log.d("구글 로그인", "구글 로그인 credential : fail");
                     }
                 })

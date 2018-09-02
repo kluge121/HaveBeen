@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_one"
+        android:enabled="true"
+        android:icon="@android:drawable/ic_dialog_info"
+        android:title="핸드룸"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_two"
+        android:icon="@android:drawable/ic_dialog_info"
+        android:title="칭긔칭기"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_three"
+        android:enabled="true"
+        android:icon="@android:drawable/ic_dialog_info"
+        android:title="알람"
+        app:showAsAction="ifRoom" />
+</menu>

@@ -15,7 +15,6 @@ interface LoginContract {
 
     //메인 액티비티
     interface ILoginView : BaseView<ILoginPresenter>
-
     interface ILoginPresenter : BasePresenter
 
 
@@ -24,6 +23,8 @@ interface LoginContract {
         fun getFragment(): Fragment
         fun getFacebookLoginBtn(): LoginButton
         fun defaultLogin()
+        fun getLocalEmail(): String
+        fun getLocalPassword(): String
     }
 
     interface ILoginSelectPresenter : BasePresenter {

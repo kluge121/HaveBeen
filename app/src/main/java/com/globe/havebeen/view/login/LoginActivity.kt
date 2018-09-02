@@ -52,9 +52,9 @@ class LoginActivity : BaseActivity(), LoginContract.ILoginView, LoginContract.De
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (getCurrentSession().handleActivityResult(requestCode, resultCode, data)) {
-            Log.e("체크22", "체크22")
+
             return
         }
-        Log.e("체크11", "체크11")
+
     }
 }

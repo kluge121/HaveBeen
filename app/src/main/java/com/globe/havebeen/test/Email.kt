@@ -1,12 +1,12 @@
 package com.globe.havebeen.test
 
+import android.content.Context
 import android.content.Intent
 import android.util.Log
 import com.globe.havebeen.constants.EMAIL_CHECK_TMP_STROE
 import com.globe.havebeen.data.preferences.TraySharedPreference
-import com.google.firebase.auth.FirebaseAuth
-import android.content.Context
 import com.google.firebase.auth.AuthResult
+import com.google.firebase.auth.FirebaseAuth
 
 /**
  * Created by baeminsu on 26/08/2018.

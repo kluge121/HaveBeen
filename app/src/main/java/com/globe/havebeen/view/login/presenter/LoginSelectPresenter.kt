@@ -3,15 +3,12 @@ package com.globe.havebeen.view.login.presenter
 import android.content.Intent
 import android.util.Log
 import com.globe.havebeen.view.login.enums.LoginType
-import com.globe.havebeen.view.login.strategy.FaceBookStategy
-import com.globe.havebeen.view.login.strategy.GoogleStrategy
-import com.globe.havebeen.view.login.strategy.ILoginStrategy
-import com.globe.havebeen.view.login.strategy.KakaoStrategy
+import com.globe.havebeen.view.login.strategy.*
 
 /**
  * Created by baeminsu on 25/08/2018.
  */
-class LoginSelectPresenter(val loginSelectView: LoginContract.ILoginSelectView)
+class LoginSelectPresenter(private val loginSelectView: LoginContract.ILoginSelectView)
     : LoginContract.ILoginSelectPresenter {
 
 
@@ -30,10 +27,10 @@ class LoginSelectPresenter(val loginSelectView: LoginContract.ILoginSelectView)
                 loginStrategy = KakaoStrategy()
             }
             LoginType.FACEBOOK -> {
-                loginStrategy = FaceBookStategy()
+                loginStrategy = FacebookStrategy()
             }
-            else -> {
-
+            LoginType.LOCAL -> {
+                loginStrategy = LocalStrategy(loginSelectView.getLocalEmail(), loginSelectView.getLocalPassword())
             }
         }
         loginStrategy.login(loginSelectView.getFragment())
@@ -44,7 +41,6 @@ class LoginSelectPresenter(val loginSelectView: LoginContract.ILoginSelectView)
     }
 
     override fun onActivityResultForLogin(requestCode: Int, resultCode: Int, data: Intent?) {
-        Log.e("체크", "체크")
         loginStrategy.onActivityResult(requestCode, resultCode, data!!)
     }
 

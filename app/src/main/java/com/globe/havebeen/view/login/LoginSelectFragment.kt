@@ -54,7 +54,6 @@ class LoginSelectFragment() : Fragment(), LoginContract.ILoginSelectView {
         val root = inflater.inflate(R.layout.fragment_login_select, container, false)
 
         with(root) {
-
             //origin btn
             val googleLoginFakeBtn: Button = findViewById(R.id.googleLoginFakeBtn)
             val facebookLoginFakeBtn: Button = findViewById(R.id.facebookLoginFakeBtn)
@@ -106,11 +105,8 @@ class LoginSelectFragment() : Fragment(), LoginContract.ILoginSelectView {
         if (getCurrentSession().handleActivityResult(requestCode, resultCode, data)) {
             return;
         }
-
-
         presenter.onActivityResultForLogin(requestCode, resultCode, data)
-        Log.e("리퀘스트코드", "$requestCode")
-        Log.e("리줄트코드", "$resultCode")
+
     }
 
     override fun getFragment(): Fragment {
@@ -123,6 +119,31 @@ class LoginSelectFragment() : Fragment(), LoginContract.ILoginSelectView {
 
     override fun defaultLogin() {
         defaultFragmentListener.addDefaultFragment()
+    }
+
+
+    override fun getLocalEmail(): String {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun getLocalPassword(): String {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    private fun buttonEnableControl() {
+        if (buttonEnableFlag) {
+            facebookLoginFakeBtn.isEnabled = false
+            googleLoginFakeBtn.isEnabled = false
+            kakaoLoginFakeBtn.isEnabled = false
+            defaultLoginBtn.isEnabled = false
+        } else {
+            facebookLoginFakeBtn.isEnabled = true
+            googleLoginFakeBtn.isEnabled = true
+            kakaoLoginFakeBtn.isEnabled = true
+            defaultLoginBtn.isEnabled = true
+        }
+        buttonEnableFlag != buttonEnableFlag
+
     }
 
 
@@ -144,17 +165,14 @@ class LoginSelectFragment() : Fragment(), LoginContract.ILoginSelectView {
                                 override fun onNotSignedUp() {
                                     Toast.makeText(context, "연결이 22", Toast.LENGTH_SHORT).show()
                                 }
-
                             })
                             dialog.dismiss()
                         }).setNegativeButton(getString(R.string.cancel)
                 ) { dialog, which -> dialog!!.dismiss() }.show()
     }
 
-
     override fun onResume() {
         super.onResume()
-        Log.e("체크리쥼", "체크리쥼")
         if (FirebaseAuth.getInstance().currentUser != null) {
             FirebaseAuth.getInstance().currentUser!!.sendEmailVerification()
                     .addOnCompleteListener {
@@ -169,19 +187,4 @@ class LoginSelectFragment() : Fragment(), LoginContract.ILoginSelectView {
         }
     }
 
-    private fun buttonEnableControl() {
-        if (buttonEnableFlag) {
-            facebookLoginFakeBtn.isEnabled = false
-            googleLoginFakeBtn.isEnabled = false
-            kakaoLoginFakeBtn.isEnabled = false
-            defaultLoginBtn.isEnabled = false
-        } else {
-            facebookLoginFakeBtn.isEnabled = true
-            googleLoginFakeBtn.isEnabled = true
-            kakaoLoginFakeBtn.isEnabled = true
-            defaultLoginBtn.isEnabled = true
-        }
-        buttonEnableFlag != buttonEnableFlag
-
-    }
 }
