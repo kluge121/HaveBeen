@@ -14,7 +14,6 @@ import com.raizlabs.android.dbflow.kotlinextensions.exists
 interface ILoginStrategy {
 
     fun login(fragment: Fragment)
-    fun onLoginSuccess()
     fun onLoginFailure(exception: Exception?): String
     fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent)
 

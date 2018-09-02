@@ -11,11 +11,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import android.widget.Toast.LENGTH_LONG
 import android.widget.ToggleButton
 import com.globe.havebeen.R
+import com.globe.havebeen.test.Email
 import com.globe.havebeen.view.login.presenter.LoginContract
-import com.globe.havebeen.view.main.MainActivity
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthActionCodeException
+import com.google.firebase.auth.FirebaseAuthEmailException
+import com.kakao.util.exception.KakaoException
 import kotlinx.android.synthetic.main.fragment_default_sign.*
 
 
@@ -83,8 +90,9 @@ class LoginDefaultFragment : Fragment(), LoginContract.IDefaultView {
         auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(activity!!) { task ->
                     if (task.isSuccessful) {
-                        Toast.makeText(activity, "${auth.currentUser!!} ", Toast.LENGTH_LONG).show()
-                        emailSend(context!!)
+                        Toast.makeText(activity,
+                                "${auth.currentUser!!} ", Toast.LENGTH_LONG).show()
+                        Email().emailSend(email, context!!)
                     } else {
                         task.exception?.printStackTrace()
                         Toast.makeText(activity,
@@ -113,22 +121,8 @@ class LoginDefaultFragment : Fragment(), LoginContract.IDefaultView {
         presenter.start()
     }
 
-    private fun emailSend(context: Context) {
-        val auth = FirebaseAuth.getInstance()
-        val user = auth.currentUser
-
-        user!!.sendEmailVerification()
-                .addOnCompleteListener {
-                    if (it.isSuccessful)
-                        Log.e("이메일 보내", "빨리 보내")
-                    context.startActivity(Intent(context, MainActivity::class.java))
-                    (context as Activity).finish()
-                }
-    }
-
 
     companion object {
         fun newInstance() = LoginDefaultFragment()
     }
-
 }

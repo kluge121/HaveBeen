@@ -39,10 +39,6 @@ class GoogleStrategy : ILoginStrategy {
         fragment.startActivityForResult(signInIntent, LoginType.GOOGLE.type)
     }
 
-    override fun onLoginSuccess() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
     override fun onLoginFailure(exception: Exception?): String {
         return when ((exception as ApiException).statusCode) {
             14 /*인터럽트*/ -> "인터럽트걸림"
