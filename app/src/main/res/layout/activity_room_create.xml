@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:paddingTop="7dp">
+
+
+    <RelativeLayout
+        android:id="@+id/roomCreateTopLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.05"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_chainStyle="packed">
+
+        <ImageButton
+            android:id="@+id/roomCreatePrev"
+            android:layout_width="60dp"
+            android:layout_height="20dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:background="@color/transparent"
+            android:scaleType="fitXY"
+            android:src="@drawable/sample_prev" />
+
+        <TextView
+            android:id="@+id/testTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/nanum_bold"
+            android:text="상단 제목"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/roomCreateSkip"
+            android:layout_width="60dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="20dp"
+            android:background="@color/transparent"
+            android:scaleType="fitXY"
+            android:src="@drawable/sample_skip" />
+
+    </RelativeLayout>
+
+    <com.badoualy.stepperindicator.StepperIndicator
+        android:id="@+id/roomCreateStepper"
+        android:layout_width="match_parent"
+        android:layout_height="13dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/roomCreateTopLayout"
+        app:stpi_animDuration="300"
+        app:stpi_circleColor="@color/sky"
+        app:stpi_circleRadius="5dp"
+        app:stpi_circleStrokeWidth="1dp"
+        app:stpi_indicatorColor="@color/sky"
+        app:stpi_lineDoneColor="@color/sky"
+        app:stpi_lineMargin="0dp"
+        app:stpi_showDoneIcon="false"
+        app:stpi_stepCount="4" />
+
+
+    <com.globe.havebeen.view.room.create.custom.NonSwipeableViewPager
+        android:id="@+id/roomCreateContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/roomCreateStepper" />
+</android.support.constraint.ConstraintLayout>

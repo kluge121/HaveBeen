@@ -8,18 +8,24 @@ apply plugin: 'kotlin-kapt'
 
 apply plugin: 'com.google.gms.google-services'
 
-
+apply plugin: 'realm-android'
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
     defaultConfig {
         applicationId "com.globe.havebeen"
         minSdkVersion 19
-        targetSdkVersion 26
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -27,6 +33,12 @@ android {
         }
     }
 }
+realm {
+    syncEnabled = true
+    //아래의 코드는 kotlin extension 사용 시 추가
+    kotlinExtensionsEnabled = true
+}
+
 ext {
     support_version = '27.1.1'
     constraint_version = '1.1.2'
@@ -52,6 +64,8 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     testImplementation 'junit:junit:4.12'
 
+    //rxjava
+    implementation "io.reactivex.rxjava2:rxjava:2.2.2"
     // support
     implementation "com.android.support:appcompat-v7:$support_version"
     implementation "com.android.support:support-annotations:$support_version"
@@ -97,11 +111,6 @@ dependencies {
     // tray - sharedpreference
     implementation 'net.grandcentrix.tray:tray:0.12.0'
 
-    // db flow
-    kapt "com.github.Raizlabs.DBFlow:dbflow-processor:$dbflow_version"
-    implementation "com.github.Raizlabs.DBFlow:dbflow-core:$dbflow_version"
-    implementation "com.github.Raizlabs.DBFlow:dbflow:$dbflow_version"
-    implementation "com.github.Raizlabs.DBFlow:dbflow-kotlinextensions:$dbflow_version"
 
     // location manager
     implementation "com.yayandroid:LocationManager:$location_manager_version"
@@ -117,4 +126,19 @@ dependencies {
     implementation 'com.google.android.gms:play-services-maps:15.0.1'
     implementation 'com.google.android.gms:play-services-location:15.0.1'
     implementation 'com.google.android.gms:play-services-places:15.0.1'
+
+    //stepper
+    implementation 'com.github.badoualy:stepper-indicator:1.0.7'
+    implementation 'com.stepstone.stepper:material-stepper:4.3.1'
+
+    //range date picker
+    implementation 'com.github.MOLO17:CustomizableCalendar:v0.1.4'
+    implementation 'joda-time:joda-time:2.10'
+    implementation 'com.leavjenn.smoothdaterangepicker:library:0.2.0'
+
+    //신상 데이터피커
+    implementation 'com.archit.calendar:awesome-calendar:1.1.2'
+
+    //circle imageview
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
 }

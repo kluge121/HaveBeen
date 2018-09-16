@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/createRoomPlanTv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="56dp"
+        android:fontFamily="@font/nanum"
+        android:text="@string/how_many_trip_day"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/createRoomPlanTv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/nanum"
+        android:text="@string/please_input_start_stop"
+        android:textColor="@color/pinkish_grey"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/createRoomPlanTv1" />
+
+
+    <RelativeLayout
+        android:id="@+id/createRoomPlanContainer1"
+        android:layout_width="309dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:background="@drawable/edge_line"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/createRoomPlanTv2">
+
+        <com.globe.havebeen.view.room.create.custom.CustomDateRangeCalendarView
+            android:id="@+id/createRoomCalendar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:disable_date_color="#ABABAB"
+            app:range_color="@color/trans_sky"
+            app:selected_date_circle_color="@color/sky"
+            app:title_color="@color/black" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/createRoomPlanStartTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="288dp"
+        android:layout_marginTop="17dp"
+        android:gravity="left"
+        android:text="@string/start_day"
+        android:textSize="15sp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="@+id/createRoomPlanContainer1"
+        app:layout_constraintTop_toBottomOf="@+id/createRoomPlanContainer1" />
+
+    <TextView
+        android:id="@+id/createRoomPlanEndTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:gravity="right"
+        android:text="@string/end_day"
+        android:textSize="15sp"
+        android:visibility="invisible"
+        app:layout_constraintRight_toRightOf="@+id/createRoomPlanContainer1"
+        app:layout_constraintTop_toBottomOf="@+id/createRoomPlanContainer1" />
+
+
+    <TextView
+        android:id="@+id/createRoomPlanStartDayTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="left"
+        android:text="9월 13일\n화요일"
+        android:textSize="24sp"
+        android:visibility="invisible"
+        app:layout_constraintLeft_toLeftOf="@+id/createRoomPlanStartTv"
+        app:layout_constraintTop_toBottomOf="@+id/createRoomPlanStartTv" />
+
+    <TextView
+        android:id="@+id/createRoomPlanEndDayTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="right"
+        android:text="9월 22일\n목요일"
+        android:textSize="24sp"
+        android:visibility="invisible"
+        app:layout_constraintRight_toRightOf="@+id/createRoomPlanEndTv"
+        app:layout_constraintTop_toBottomOf="@+id/createRoomPlanEndTv" />
+
+    <ImageView
+        android:id="@+id/createRoomPlanArrow"
+        android:layout_width="24dp"
+        android:layout_height="20dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/sample_flow"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/createRoomPlanStartDayTv"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/createRoomPlanStartDayTv" />
+
+
+</android.support.constraint.ConstraintLayout>

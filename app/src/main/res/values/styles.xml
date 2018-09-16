@@ -40,4 +40,48 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+
+    <style name="DotStepperStyle">
+        <item name="ms_stepperType">dots</item>
+        <item name="ms_activeStepColor">#FFFFFF</item>
+        <item name="ms_inactiveStepColor">#006867</item>
+        <item name="ms_bottomNavigationBackground">?attr/colorAccent</item>
+    </style>
+
+    <style name="SearchEditTextStyle">
+        <item name="android:background">@drawable/search_edittext_rounded</item>
+    </style>
+
+    <style name="EditTextStyle" parent="Widget.AppCompat.EditText">
+        <item name="android:hint">@string/try_search_city</item>
+        <item name="colorControlNormal">@color/edit_text_background_color</item>
+        <item name="colorControlActivated">@color/black</item>
+        <item name="android:textCursorDrawable">@color/black</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textColorHint">@color/gray</item>
+        <item name="android:textColorHighlight">@color/gray</item>
+    </style>
+
+
+    <style name="TextStyle">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#030303</item>
+    </style>
+
+    <style name="TextStyle2">
+        <item name="android:textSize">25sp</item>
+        <item name="android:lineSpacingExtra">5sp</item>
+        <item name="android:textColor">@color/greyish_brown</item>
+    </style>
+
+    <style name="TextStyle3">
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:textColor">@color/pinkish_grey</item>
+    </style>
+
+    <style name="TextStyle4">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/greyish_brown</item>
+    </style>
 </resources>

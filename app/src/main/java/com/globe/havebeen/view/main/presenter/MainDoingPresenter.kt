@@ -3,10 +3,10 @@ package com.globe.havebeen.view.main.presenter
 /**
  * Created by baeminsu on 02/09/2018.
  */
-class MainFriendListPresenter(friendListView: MainContract.IFriendListView) : MainContract.IFriendListPresenter {
+class MainDoingPresenter(doingListView: MainContract.IDoingListView) : MainContract.IDoingPresenter {
 
     init {
-        friendListView.presenter = this
+        doingListView.presenter = this
     }
 
     override fun start() {

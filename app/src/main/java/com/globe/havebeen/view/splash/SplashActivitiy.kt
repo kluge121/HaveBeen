@@ -3,14 +3,14 @@ package com.globe.havebeen.view.splash
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import android.widget.Toast
 import com.globe.havebeen.R
 import com.globe.havebeen.view.base.BaseActivity
 import com.globe.havebeen.view.login.LoginActivity
 import com.globe.havebeen.view.main.MainActivity
-import com.globe.havebeen.view.splash.Presenter.SplashContract
-import com.globe.havebeen.view.splash.Presenter.SplashPresenter
+import com.globe.havebeen.view.splash.presenter.SplashContract
+import com.globe.havebeen.view.splash.presenter.SplashPresenter
 import com.google.firebase.auth.FirebaseAuth
+import io.realm.Realm
 
 /**
  * Created by baeminsu on 26/08/2018.
@@ -23,7 +23,9 @@ class SplashActivity : BaseActivity(), SplashContract.ISplashView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
+
         presenter = SplashPresenter(this)
+        presenter.initCityList(this)
         Handler().postDelayed(Runnable {
             if (FirebaseAuth.getInstance().currentUser != null) {
                 startActivity(Intent(this, MainActivity::class.java))

@@ -1,14 +1,24 @@
 package com.globe.havebeen
 
 import android.app.Application
+import android.content.Context
+import android.support.multidex.MultiDex
+import android.support.multidex.MultiDexApplication
+import com.globe.havebeen.data.preferences.TraySharedPreference
 import com.kakao.auth.*
-import com.raizlabs.android.dbflow.config.FlowLog
-import com.raizlabs.android.dbflow.config.FlowManager
+
+import io.realm.Realm
+import io.realm.RealmConfiguration
 
 /**
  * Created by baeminsu on 25/08/2018.
  */
-class HaveBeenApplication : Application() {
+class HaveBeenApplication : MultiDexApplication() {
+
+    override fun attachBaseContext(base: Context?) {
+        super.attachBaseContext(base)
+        MultiDex.install(this);
+    }
 
     private class KakaoSDKAdapter : KakaoAdapter() {
         //kakao
@@ -30,11 +40,9 @@ class HaveBeenApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         instance = this
-
-        FlowManager.init(this)
-        FlowLog.setMinimumLoggingLevel(FlowLog.Level.V)
-
+        Realm.init(this)
         KakaoSDK.init(KakaoSDKAdapter())
+
     }
 
 

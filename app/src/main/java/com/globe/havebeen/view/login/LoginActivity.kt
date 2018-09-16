@@ -28,8 +28,10 @@ class LoginActivity : BaseActivity(), LoginContract.ILoginView, LoginContract.De
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
         val fragment = LoginSelectFragment.newInstance()
         replaceFragment(fragment, R.id.loginFragmentContainer)
+
         presenter = LoginPresenter(this)
         loginSelectPresenter = LoginSelectPresenter(fragment)
     }

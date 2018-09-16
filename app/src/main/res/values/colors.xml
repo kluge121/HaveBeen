@@ -12,4 +12,24 @@
     <color name="facebookBlue">#4065b5</color>
     <color name="googleRed">#e73835</color>
     <color name="toolbar">#EEEEEE</color>
+
+    <color name="gray">#7a6e6b</color>
+
+    <color name="sky">#56bee6</color>
+    <color name="trans_sky">#f0f8fe</color>
+
+    <color name="calenderTextColor">#707586</color>
+    <color name="edit_text_background_color">#f6f6f6</color>
+
+    <color name="search_city_name_color">#4a4a4a</color>
+    <color name="search_country_name_color">#9b9b9b</color>
+
+
+    <color name="aqua">#17c0eb</color>
+    <color name="greyish_brown">#4a4a4a</color>
+    <color name="macaroni_and_cheese">#f6b931</color>
+    <color name="pinkish_grey">#bfbfbf</color>
+    <color name="water_blue">#15b0d8</color>
+
+
 </resources>

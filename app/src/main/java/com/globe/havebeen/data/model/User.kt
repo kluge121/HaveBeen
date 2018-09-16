@@ -5,7 +5,7 @@ package com.globe.havebeen.data.model
  */
 
 data class User(
-        var email: String = "",
-        var nickname: String = "",
-        var profileUrl: String = ""
+        val name: String? = "",
+        var email: String? = "",
+        var profileUrl: String? = ""
 )

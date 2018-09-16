@@ -3,10 +3,8 @@ package com.globe.havebeen.view.login.strategy
 import android.content.Intent
 import android.support.v4.app.Fragment
 import android.util.Log
-import android.widget.Toast
 import com.globe.havebeen.data.model.User
 import com.google.firebase.firestore.FirebaseFirestore
-import com.raizlabs.android.dbflow.kotlinextensions.exists
 
 /**
  * Created by baeminsu on 25/08/2018.

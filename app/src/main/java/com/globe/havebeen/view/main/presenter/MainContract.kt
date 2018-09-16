@@ -11,23 +11,22 @@ interface MainContract {
 
     //메인 액티비티
     interface IMainPresenter : BasePresenter
-
     interface IMainView : BaseView<IMainPresenter>
 
     //룸 탭 프래그먼트
-    interface IRoomListPresenter : BasePresenter
+    interface IBeforePresenter : BasePresenter
 
-    interface IRoomListView : BaseView<IRoomListPresenter>
+    interface IBeforeView : BaseView<IBeforePresenter>
 
     //친구 탭 프래그먼트
-    interface IFriendListPresenter : BasePresenter
+    interface IDoingPresenter : BasePresenter
 
-    interface IFriendListView : BaseView<IFriendListPresenter>
+    interface IDoingListView : BaseView<IDoingPresenter>
 
     //알람 탭 프래그먼트
-    interface IAlarmListPresenter : BasePresenter
+    interface IAfterPresenter : BasePresenter
 
-    interface IAlarmListView : BaseView<IAlarmListPresenter>
+    interface IAfterView : BaseView<IAfterPresenter>
 
 
 }

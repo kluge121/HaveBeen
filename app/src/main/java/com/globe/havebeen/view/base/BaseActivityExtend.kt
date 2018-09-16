@@ -26,8 +26,16 @@ private inline fun FragmentManager.transact(action: FragmentTransaction.() -> Un
         action()
     }.commit()
 }
+
 fun AppCompatActivity.removeFragmentById(@IdRes frameId: Int) {
     supportFragmentManager.transact {
         remove(supportFragmentManager.findFragmentById(frameId))
+    }
+}
+
+
+fun BaseActivity.replaceFragmentTag(fragment: Fragment, @IdRes frameId: Int, tag: String) {
+    supportFragmentManager.transact {
+        replace(frameId, fragment, tag)
     }
 }
