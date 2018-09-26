@@ -15,6 +15,7 @@ import android.widget.EditText
 import com.globe.havebeen.R
 import com.globe.havebeen.data.model.realm.City
 import com.globe.havebeen.view.room.create.adapter.RoomPlaceListRecyclerViewAdapter
+import com.globe.havebeen.view.room.create.adapter.SelectPlaceItemDecoration
 import com.globe.havebeen.view.room.create.custom.CustomSnackbar
 import com.globe.havebeen.view.room.create.presenter.RoomCreateContract
 import io.realm.Realm
@@ -33,13 +34,18 @@ class RoomCreatePlaceFragment : Fragment(), RoomCreateContract.IRoomCreatePlaceV
 
     override fun setUserVisibleHint(isVisibleToUser: Boolean) {
         super.setUserVisibleHint(isVisibleToUser)
+
         if (isVisibleToUser && context != null) {
 
-            if ((context as RoomCreateActivity).roomCreateInfo.cityList != null && (context as RoomCreateActivity).roomCreateInfo.cityList!!.size > 0) {
-                snackbar!!.setText("총 여행지 ${(context as RoomCreateActivity).roomCreateInfo.cityList!!.size}곳 / 확정")
+            if ((context as RoomCreateActivity).roomCreateInfo.cityList.size > 0 && adapater.getArrayList().size == 0) {
+                snackbar!!.setText("총 여행지 ${(context as RoomCreateActivity).roomCreateInfo.cityList.size}곳 / 확정")
                 (context as RoomCreateActivity).skipBtnHide(true)
-                adapater.setArrayList((context as RoomCreateActivity).roomCreateInfo.cityList!!)
+                adapater.setArrayList((context as RoomCreateActivity).roomCreateInfo.cityList)
                 snackbar!!.show()
+            } else if ((context as RoomCreateActivity).roomCreateInfo.cityList.size > 0) {
+                snackbar!!.setText("총 여행지 ${(context as RoomCreateActivity).roomCreateInfo.cityList.size}곳 / 확정")
+                snackbar!!.show()
+                (context as RoomCreateActivity).skipBtnHide(true)
             } else {
                 (context as RoomCreateActivity).skipBtnHide(false)
                 snackbar!!.dismiss()
@@ -62,6 +68,7 @@ class RoomCreatePlaceFragment : Fragment(), RoomCreateContract.IRoomCreatePlaceV
             adapater = RoomPlaceListRecyclerViewAdapter(context, fragment)
             createRoomPlaceRecyclerView.adapter = adapater
             createRoomPlaceRecyclerView.layoutManager = LinearLayoutManager(context)
+            createRoomPlaceRecyclerView.addItemDecoration(SelectPlaceItemDecoration(context, R.dimen.select_place_space))
             val createRoomPlaceCityEditText: EditText = findViewById(R.id.createRoomPlaceCityEditText)
             createRoomPlaceCityEditText.setOnClickListener {
                 val intent = Intent(context, RoomCitySearch::class.java)
@@ -71,7 +78,8 @@ class RoomCreatePlaceFragment : Fragment(), RoomCreateContract.IRoomCreatePlaceV
 
             snackbar = CustomSnackbar.make(activity!!.findViewById(android.R.id.content), Snackbar.LENGTH_INDEFINITE)
             snackbar!!.setAction("장소 추가", View.OnClickListener {
-                (context as RoomCreateActivity).roomCreateInfo.cityList = adapater.getArrayList()
+                (context as RoomCreateActivity).roomCreateInfo.thumCityName = adapater.getThumCityName()
+                (context as RoomCreateActivity).roomCreateInfo.cityList = adapater.getItemIdArrayList()
                 (context as RoomCreateActivity).onNextPressed()
             })
 
@@ -89,7 +97,8 @@ class RoomCreatePlaceFragment : Fragment(), RoomCreateContract.IRoomCreatePlaceV
             val realm = Realm.getDefaultInstance()
             val realmQuery = realm.where(City::class.java)
             val result = realmQuery.equalTo("id", addCityId).findAll()
-            adapater.addItem(result.get(0)!!)
+
+            adapater.addItem(result[0]!!)
         }
 
         super.onActivityResult(requestCode, resultCode, data)

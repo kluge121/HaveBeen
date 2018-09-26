@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="31dp"
         android:layout_marginTop="56dp"
-        android:fontFamily="@font/nanum"
+        android:fontFamily="@font/nanum_bold"
         android:text="@string/cost_fixed"
         android:textColor="@color/black"
         android:textSize="25sp"
@@ -21,13 +21,14 @@
     <TextView
         android:id="@+id/createRoomCostTv2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:layout_marginStart="31dp"
         android:layout_marginTop="5dp"
         android:fontFamily="@font/nanum"
+        android:gravity="center_vertical"
         android:text="@string/please_input_cost"
         android:textColor="@color/pinkish_grey"
-        android:textSize="16sp"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/createRoomCostTv1" />
 
@@ -48,6 +49,7 @@
             android:background="@null"
             android:focusable="true"
             android:inputType="number"
+            android:maxLength="11"
             android:textColor="@color/black"
             android:textSize="20sp" />
 

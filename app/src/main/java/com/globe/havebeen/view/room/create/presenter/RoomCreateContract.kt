@@ -15,7 +15,10 @@ import kotlin.collections.HashMap
 interface RoomCreateContract {
 
     interface IRoomCreatePresenter : BasePresenter
-    interface IRoomCreateView : BaseView<IRoomCreatePresenter>
+    interface IRoomCreateView : BaseView<IRoomCreatePresenter> {
+
+        fun showCreateDialog()
+    }
 
     interface IRoomCreatePlanPresenter : BasePresenter
     interface IRoomCreatePlanView : BaseView<IRoomCreatePlanPresenter> {
@@ -39,6 +42,8 @@ interface RoomCreateContract {
 
     interface IRoomCreateFriendView : BaseView<IRoomCreateFriendPresenter> {
         fun notiHideAndSelectListShow(boolean: Boolean)
+        fun addSelectItem(user: User)
+        fun deleteSelectItem(user: User)
         fun friendListAllUpdate(hash: HashMap<Char, ArrayList<User>>)
     }
 

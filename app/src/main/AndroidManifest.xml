@@ -77,6 +77,10 @@
 
         <activity android:name=".view.room.create.RoomCitySearch" />
 
+        <activity
+            android:name=".view.room.create.dialog.RoomCreateDialog"
+            android:theme="@style/dialogBlur" />
+
 
     </application>
 

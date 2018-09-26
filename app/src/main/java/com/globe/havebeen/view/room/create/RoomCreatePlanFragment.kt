@@ -55,6 +55,8 @@ class RoomCreatePlanFragment : Fragment(), RoomCreateContract.IRoomCreatePlanVie
             } else {
                 snackbar!!.dismiss()
             }
+        } else if (snackbar != null && context != null) {
+            snackbar!!.dismiss()
         }
     }
 

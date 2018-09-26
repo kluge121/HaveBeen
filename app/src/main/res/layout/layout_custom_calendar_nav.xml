@@ -2,14 +2,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/rlHeaderCalendar"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:paddingBottom="@dimen/dateTitlePaddingBottom">
+    android:layout_height="wrap_content">
 
 
     <android.support.v7.widget.AppCompatImageView
         android:id="@+id/imgVNavLeft"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="17dp"
+        android:layout_height="17dp"
         android:layout_centerVertical="true"
         android:layout_toLeftOf="@+id/imgVNavRight"
         android:src="@drawable/ic_left_selector" />
@@ -29,8 +28,8 @@
 
     <android.support.v7.widget.AppCompatImageView
         android:id="@+id/imgVNavRight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="17dp"
+        android:layout_height="17dp"
         android:layout_marginEnd="20dp"
         android:layout_alignParentEnd="true"
         android:layout_alignTop="@+id/imgVNavLeft"

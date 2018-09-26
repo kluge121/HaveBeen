@@ -32,7 +32,7 @@
     <string name="end_day">도착일</string>
 
     <!--방생성 (도시)-->
-    <string name="where_city">어디로 여행갈 계획이신가요?</string>
+    <string name="where_city">어디로 여행갈까요?</string>
     <string name="please_input_city">여행갈 나라, 도시를 검색해주세요.</string>
     <string name="try_search_city">여행지를 검색하세요.</string>
     <string name="popular_city">인기도시</string>
@@ -50,5 +50,11 @@
     <string name="friend_noti">동행하는 사람이 있나요?</string>
     <string name="please_select_friend">앱을 사용하는 동행자가 있다면 초대해주세요.</string>
 
+    <!--방생성 다이어리-->
+    <string name="final_fix">최종확인</string>
+    <string name="test_schedul">2018년 9월 13일 화요일 - 9월 22일 목요일\n 9박 10일</string>
+    <string name="test_user">김혜자님\n외 2명</string>
+    <string name="test_money">총 여행예산\n600,000원</string>
+    <string name="create_room">여행스토리 생성하기</string>
 
 </resources>

@@ -17,7 +17,7 @@ class RoomCreateFriendPresenter(var friendView: RoomCreateContract.IRoomCreateFr
 
 
     override fun start() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
     override fun friendListInit() {
@@ -31,11 +31,11 @@ class RoomCreateFriendPresenter(var friendView: RoomCreateContract.IRoomCreateFr
                     }
                 }
     }
-
     override fun initialSort(list: ArrayList<User>): HashMap<Char, ArrayList<User>> {
         val hash = HashMap<Char, ArrayList<User>>()
-
-        for (user in list) {
+        val iterator = list.iterator()
+        while (iterator.hasNext()) {
+            val user = iterator.next()
             val initial = user.name!!.getInitialSound()
             if (!hash.containsKey(initial)) {
                 if (initial != null) {
@@ -43,12 +43,9 @@ class RoomCreateFriendPresenter(var friendView: RoomCreateContract.IRoomCreateFr
                 }
             }
             hash[initial]!!.add(user)
+            iterator.remove()
         }
-
         friendView.friendListAllUpdate(hash)
         return hash
-
     }
-
-
 }

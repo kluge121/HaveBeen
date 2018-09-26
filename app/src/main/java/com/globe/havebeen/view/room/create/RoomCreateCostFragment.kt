@@ -40,13 +40,23 @@ class RoomCreateCostFragment : Fragment(), RoomCreateContract.IRoomCreateCostVie
                 createRoomCostEditTextCost.setText("${(context as RoomCreateActivity).roomCreateInfo.cost}")
                 makeCostOfDayText((context as RoomCreateActivity).roomCreateInfo.cost!!)
                 snackbar.setText("예산 확정")
+                (context as RoomCreateActivity).skipBtnHide(true)
+                snackbar.show()
+
+            } else if (!createRoomCostEditTextCost.text.toString().isBlank()) {
+                makeCostOfDayText(createRoomCostEditTextCost.text.toString().replace(",", "").toInt())
+                snackbar.setText("예산 확정")
+                (context as RoomCreateActivity).skipBtnHide(true)
+                snackbar.show()
             } else {
+                (context as RoomCreateActivity).skipBtnHide(false)
                 snackbar.dismiss()
             }
         } else {
             if (context != null) {
                 val inputMethodManager = (context as RoomCreateActivity).getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
                 inputMethodManager.hideSoftInputFromWindow(createRoomCostEditTextCost.getWindowToken(), 0)
+                snackbar.dismiss()
             }
 
 
@@ -76,6 +86,7 @@ class RoomCreateCostFragment : Fragment(), RoomCreateContract.IRoomCreateCostVie
                 override fun afterTextChanged(p0: Editable?) {
                     if (p0.toString().isEmpty()) {
                         snackbar.dismiss()
+                        dayCostShow(false)
                     }
 
                 }
@@ -88,6 +99,7 @@ class RoomCreateCostFragment : Fragment(), RoomCreateContract.IRoomCreateCostVie
                     if (!p0.isNullOrBlank() && !(p0.toString() == tmpText)) {
                         if (!snackbar.isShown) {
                             snackbar.show()
+                            dayCostShow(true)
                         }
                         tmpText = decimalFormat.format(java.lang.Double.parseDouble(p0.toString().replace(",", "")))
                         createRoomCostEditTextCost.setText(tmpText)
@@ -103,9 +115,19 @@ class RoomCreateCostFragment : Fragment(), RoomCreateContract.IRoomCreateCostVie
         return view
     }
 
+
+    fun dayCostShow(boolean: Boolean) {
+
+        if (boolean) {
+            createRoomCostContainer3.alpha = 1f
+        } else {
+            createRoomCostContainer3.alpha = 0f
+        }
+
+    }
+
     override fun makeCostOfDayText(price: Int) {
         if (period != null) {
-            createRoomCostContainer3.alpha = 1f
             createRoomCostDayNotiTv.text = "${period}박${period!! + 1}일 여행 시 \n일일 평균 지출금액은"
             val intCost = (price.toString().replace(",", "").toInt() / (period!! + 1))
             val longCost = intCost.toLong()
@@ -113,8 +135,6 @@ class RoomCreateCostFragment : Fragment(), RoomCreateContract.IRoomCreateCostVie
             createRoomCostDayCostTv.text = decimalFormat.format(longCost)
 
 
-        } else {
-            createRoomCostContainer3.alpha = 0f
         }
     }
 

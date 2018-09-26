@@ -141,4 +141,7 @@ dependencies {
 
     //circle imageview
     implementation 'de.hdodenhof:circleimageview:2.2.0'
+
+    implementation 'org.parceler:parceler-api:1.1.11'
+    kapt 'org.parceler:parceler:1.1.11'
 }

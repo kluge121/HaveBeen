@@ -6,44 +6,64 @@
     android:layout_height="match_parent">
 
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/createRoomFriendSelectListRecyclerView"
+    <RelativeLayout
+        android:id="@+id/createRoomTopContainer"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/createRoomFriendEditTextContainer"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/createRoomFriendTv1" />
-
-    <TextView
-        android:id="@+id/createRoomFriendTv1"
-        android:layout_width="wrap_content"
-        android:layout_height="29dp"
-        android:layout_marginStart="31dp"
-        android:layout_marginTop="56dp"
-        android:fontFamily="@font/nanum"
-        android:gravity="center"
-        android:text="@string/friend_noti"
-        android:textColor="@color/black"
-        android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/createRoomFriendTv2"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_marginStart="31dp"
-        android:layout_marginTop="5dp"
-        android:fontFamily="@font/nanum"
-        android:gravity="center"
-        android:text="@string/please_select_friend"
-        android:textColor="@color/pinkish_grey"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/createRoomFriendTv1" />
+
+        <TextView
+            android:id="@+id/createRoomFriendTv1"
+            android:layout_width="wrap_content"
+            android:layout_height="29dp"
+            android:layout_marginStart="31dp"
+            android:layout_marginTop="56dp"
+            android:fontFamily="@font/nanum_bold"
+            android:gravity="center"
+            android:text="@string/friend_noti"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/createRoomFriendTv2"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_below="@+id/createRoomFriendTv1"
+            android:layout_marginStart="31dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/nanum"
+            android:gravity="center"
+            android:text="@string/please_select_friend"
+            android:textColor="@color/pinkish_grey"
+            android:textSize="14sp" />
+
+
+        <TextView
+            android:id="@+id/createRoomFriendSelectFriendNotiTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="56dp"
+            android:text="선택한 동행자 1"
+            android:textColor="@color/sky_text"
+            android:visibility="invisible" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/createRoomFriendSelectListRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/createRoomFriendSelectFriendNotiTv"
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="21dp"
+            android:visibility="invisible" />
+
+
+    </RelativeLayout>
+
 
     <FrameLayout
         android:id="@+id/createRoomFriendEditTextContainer"
@@ -53,7 +73,7 @@
         android:background="@drawable/search_edittext_rounded"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/createRoomFriendTv2"
+        app:layout_constraintTop_toBottomOf="@+id/createRoomTopContainer"
         app:layout_constraintWidth_percent="0.85">
 
         <EditText
@@ -67,18 +87,47 @@
             android:textSize="14sp" />
     </FrameLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/createRoomFriendListRecyclerView"
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="3dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/createRoomFriendEditTextContainer">
 
-    </android.support.v7.widget.RecyclerView>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/createRoomFriendListRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/createRoomFriendSncakContainer"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="3dp" />
+
+        <LinearLayout
+            android:id="@+id/createRoomFriendSncakContainer"
+            android:layout_width="match_parent"
+            android:layout_height="73dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:background="@color/sky"
+            android:gravity="center"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/createRoomFriendSncakTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nanum_bold"
+                android:text="설정하시겠습니까"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
 
 </android.support.constraint.ConstraintLayout>

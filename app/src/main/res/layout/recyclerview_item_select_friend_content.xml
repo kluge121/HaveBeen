@@ -8,15 +8,31 @@
         android:id="@+id/selectFriendContentProfileImage"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:src="@drawable/sample_everland" />
+        android:src="@drawable/sample_everland"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/select_freind_x_icon"
+        android:layout_width="15dp"
+        android:layout_height="15dp" />
 
     <TextView
         android:id="@+id/selectFriendContentName"
-        android:layout_width="wrap_content"
+        android:layout_width="40dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:singleLine="true"
         android:text="김혜자"
         android:textColor="@color/greyish_brown"
         android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/selectFriendContentProfileImage" />
+
 </android.support.constraint.ConstraintLayout>

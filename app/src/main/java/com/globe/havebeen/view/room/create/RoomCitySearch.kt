@@ -5,14 +5,17 @@ import android.support.v7.widget.LinearLayoutManager
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.widget.EditText
 import com.globe.havebeen.R
 import com.globe.havebeen.constants.CITY_UPDATE_DATE
 import com.globe.havebeen.data.model.realm.City
 import com.globe.havebeen.data.preferences.TraySharedPreference
 import com.globe.havebeen.view.base.BaseActivity
 import com.globe.havebeen.view.room.create.adapter.CitySearchRecyclerViewAdapter
+import com.globe.havebeen.view.room.create.adapter.SearchPlaceItemDecoration
 import io.realm.Realm
 import kotlinx.android.synthetic.main.acitivity_city_search.*
+import kotlinx.android.synthetic.main.fragment_room_create_friend.*
 import java.util.*
 
 /**
@@ -22,6 +25,7 @@ class RoomCitySearch : BaseActivity() {
 
     lateinit var adapter: CitySearchRecyclerViewAdapter
     lateinit var selectList: ArrayList<Int>
+    lateinit var editText: EditText
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -73,10 +77,13 @@ class RoomCitySearch : BaseActivity() {
             city2.cityCountry = "인기 국가"
             realm.commitTransaction()
             TraySharedPreference(this).put(CITY_UPDATE_DATE, "1")
+            realm.close()
         }
 
         citySearchRecyclerview.adapter = adapter
         citySearchRecyclerview.layoutManager = LinearLayoutManager(this)
+        citySearchRecyclerview.addItemDecoration(SearchPlaceItemDecoration(this, R.dimen.search_place_space))
+
         adapter.defaultClear()
 
 
@@ -86,7 +93,7 @@ class RoomCitySearch : BaseActivity() {
         }
         citySearchEditText.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
-                val text = citySearchEditText.text.toString().toLowerCase(Locale.getDefault())
+                val text = p0.toString().toLowerCase(Locale.getDefault())
                 adapter.filter(text)
 
                 if (!p0.isNullOrBlank()) {

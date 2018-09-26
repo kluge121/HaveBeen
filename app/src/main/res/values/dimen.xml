@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="calendar_day_text_size">5sp</dimen>
+    <dimen name="select_friend_space">25dp</dimen>
+    <dimen name="select_place_space">25dp</dimen>
+    <dimen name="search_place_space">27sp</dimen>
 </resources>

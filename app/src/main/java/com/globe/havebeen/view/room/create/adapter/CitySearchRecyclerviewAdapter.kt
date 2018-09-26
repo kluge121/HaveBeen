@@ -7,6 +7,8 @@ import android.support.v7.widget.RecyclerView
 import android.view.*
 import android.content.Context
 import android.content.Intent
+import android.graphics.Rect
+import android.support.annotation.DimenRes
 import android.util.Log
 import android.widget.TextView
 import com.globe.havebeen.R
@@ -107,7 +109,37 @@ class CitySearchViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         countryTv.text = city.cityCountry
     }
 
+}
 
+class SearchPlaceItemDecoration : RecyclerView.ItemDecoration {
+
+    var itemOffset: Int? = null
+
+    constructor(itemOffset: Int) {
+        this.itemOffset = itemOffset
+    }
+
+    constructor(context: Context, @DimenRes itemOffsetId: Int) {
+        this.itemOffset = context.resources.getDimensionPixelOffset(itemOffsetId)
+    }
+
+    override fun getItemOffsets(outRect: Rect?, view: View?, parent: RecyclerView?, state: RecyclerView.State?) {
+
+        val position = parent!!.getChildAdapterPosition(view)
+        val itemCount = state!!.itemCount
+
+
+        // first
+        if (position == 0) {
+            outRect!!.set(0, 0, 0, this.itemOffset!!)
+            //last
+        } else if (itemCount > 0 && position == itemCount - 1) {
+            outRect!!.set(0, 0, 0, 0)
+
+        } else {
+            outRect!!.set(0, 0, 0, this.itemOffset!!)
+        }
+    }
 }
 
 

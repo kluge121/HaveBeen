@@ -13,7 +13,7 @@
         android:fontFamily="@font/nanum_bold"
         android:text="설정하시겠습니까"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
