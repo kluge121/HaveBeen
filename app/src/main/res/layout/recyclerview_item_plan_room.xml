@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="212dp"
+    android:layout_height="144dp"
+    android:background="@drawable/room_box_container">
+
+
+    <ImageView
+        android:id="@+id/roomUserIconIv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="11dp"
+        android:src="@drawable/room_user_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="3dp"
+        android:layout_marginTop="10dp"
+        android:text="3"
+        android:textColor="#ffffff"
+        android:textSize="8sp"
+        app:layout_constraintEnd_toStartOf="@id/roomUserIconIv"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/roomStateIv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:background="#50e3c2"
+        android:src="@drawable/room_lodging_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/roomStateTv"
+        android:layout_width="wrap_content"
+        android:layout_height="33dp"
+        android:layout_marginTop="58dp"
+        android:gravity="center"
+        android:lineSpacingExtra="20sp"
+        android:text="숙소 결정중..."
+        android:textColor="#ffffff"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/roomDateTv"
+        android:layout_width="wrap_content"
+        android:layout_height="10dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="103dp"
+        android:letterSpacing="-0.04"
+        android:text="2018.10.11 ~ 10.12"
+        android:textColor="#ffffff"
+        android:textSize="9sp"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/roomNameTv"
+        android:layout_width="wrap_content"
+        android:layout_height="17dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="115dp"
+        android:letterSpacing="-0.02"
+        android:text="2018 대전 산악동호회"
+        android:textColor="#ffffff"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</android.support.constraint.ConstraintLayout>

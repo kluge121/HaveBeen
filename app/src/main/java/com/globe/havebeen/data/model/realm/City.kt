@@ -2,8 +2,6 @@ package com.globe.havebeen.data.model.realm
 
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey
-import org.parceler.Parcel
-import java.io.Serializable
 
 /**
  * Created by baeminsu on 10/09/2018.

@@ -1,68 +1,74 @@
 package com.globe.havebeen.view.main
 
-import android.annotation.SuppressLint
 import android.os.Bundle
-import android.support.design.internal.BottomNavigationItemView
 import android.support.design.internal.BottomNavigationMenuView
-import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
+import android.util.TypedValue
+import android.view.View
 import com.globe.havebeen.R
-import com.globe.havebeen.view.main.adapter.MainFragmentViewPagerAdpater
+import com.globe.havebeen.extension.disableShiftMode
+import com.globe.havebeen.view.main.adapter.MainBottomTabViewPagerAdapter
 import kotlinx.android.synthetic.main.activity_main.*
-import java.lang.reflect.Field
+
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val adapter = MainBottomTabViewPagerAdapter(supportFragmentManager)
+        mainActivityViewPager.adapter = adapter
+        mainActivityViewPager.currentItem = 0
+        mainActivityViewPager.offscreenPageLimit = 4
 
-        val viewPagerAdapter = MainFragmentViewPagerAdpater(supportFragmentManager, this)
-        mainViewpager.adapter = viewPagerAdapter
+        initBottomNavigation()
 
-        BottomNavigationViewHelper.disableShiftMode(mainBottomNavigationView)
-        mainBottomNavigationView.setOnNavigationItemSelectedListener {
+
+    }
+
+    fun initBottomNavigation() {
+        mainBottomNavigation.disableShiftMode()
+        mainBottomNavigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.action_one -> return@setOnNavigationItemSelectedListener true
-                R.id.action_two -> return@setOnNavigationItemSelectedListener true
-                R.id.action_three -> return@setOnNavigationItemSelectedListener true
+                R.id.bottom_tab1 -> {
+                    mainActivityViewPager.currentItem = 0
+                    mainTabNameTv.text = getString(R.string.tab_journey)
+                    return@setOnNavigationItemSelectedListener true
+                }
+                R.id.bottom_tab2 -> {
+                    mainTabNameTv.text = getString(R.string.tab_friend)
+                    mainActivityViewPager.currentItem = 1
+                    return@setOnNavigationItemSelectedListener true
+                }
+                R.id.bottom_tab3 -> {
+                    mainTabNameTv.text = getString(R.string.tab_alarm)
+                    mainActivityViewPager.currentItem = 2
+                    return@setOnNavigationItemSelectedListener true
+                }
+                R.id.bottom_tab4 -> {
+                    mainTabNameTv.text = getString(R.string.tab_feed)
+                    mainActivityViewPager.currentItem = 3
+                    return@setOnNavigationItemSelectedListener true
+                }
                 else -> {
                     return@setOnNavigationItemSelectedListener false
-
                 }
             }
         }
+        val menuView = mainBottomNavigation.getChildAt(0) as BottomNavigationMenuView
+        for (i in 0 until menuView.childCount) {
+            val iconView = menuView.getChildAt(i).findViewById(android.support.design.R.id.icon) as View
+            val layoutParams = iconView.getLayoutParams()
+            val displayMetrics = resources.displayMetrics
+            layoutParams.height = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 20f, displayMetrics).toInt()
+            layoutParams.width = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 20f, displayMetrics).toInt()
+            iconView.setLayoutParams(layoutParams)
 
+
+        }
     }
 
 
 }
 
-
-class BottomNavigationViewHelper {
-    companion object {
-
-        @SuppressLint("RestrictedApi")
-        fun disableShiftMode(view: BottomNavigationView) {
-
-            val menuView = view.getChildAt(0) as BottomNavigationMenuView
-
-            try {
-                val shiftingMode: Field = menuView.javaClass.getDeclaredField("mShiftingMode")
-                shiftingMode.isAccessible = true
-                shiftingMode.setBoolean(menuView, false)
-                shiftingMode.isAccessible = false
-                for (i: Int in 0 until menuView.childCount) {
-                    val item = menuView.getChildAt(i) as BottomNavigationItemView
-                    item.setShiftingMode(false)
-                    item.setPadding(0, 20, 0, 0)
-                    item.setChecked(item.itemData.isChecked)
-                }
-            } catch (e: NoSuchFileException) {
-            } catch (e: IllegalAccessException) {
-            }
-        }
-
-    }
-}
 

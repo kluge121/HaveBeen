@@ -38,67 +38,19 @@ class RoomCreateFriendFragment : Fragment(), RoomCreateContract.IRoomCreateFrien
     private lateinit var snackbarLayout: LinearLayout
     lateinit var snackbar: CustomSnackbar
     lateinit var snackbarTv: TextView
-    var isViewShown = false
-
     override lateinit var presenter: RoomCreateContract.IRoomCreateFriendPresenter
-
-
-    //createRoomFriendSelectFriendNotiTv.text = "선택한 동행자 ${selectAdapter.itemCount}"
-
-//    super.setUserVisibleHint(isVisibleToUser)
-//    if (isVisibleToUser && context != null) {
-//
-//        if ((context as RoomCreateActivity).roomCreateInfo.friendList!!.size > 0 && selectAdapter.arrayList.size == 0) {
-//            selectAdapter.arrayList = (context as RoomCreateActivity).roomCreateInfo.friendList!!
-//            selectAdapter.notifyDataSetChanged()
-//            snackBarDisplay(true)
-//            notiHideAndSelectListShow(true)
-//
-//        } else {
-//            snackBarDisplay(false)
-//            notiHideAndSelectListShow(false)
-//        }
-//
-//    }
-
 
     override fun setUserVisibleHint(isVisibleToUser: Boolean) {
         super.setUserVisibleHint(isVisibleToUser)
-
         if (isVisibleToUser && context != null && view != null) {
-
-            isViewShown = true
-
-            if ((context as RoomCreateActivity).roomCreateInfo.friendList.size > 0 && selectAdapter.arrayList.size == 0) {
-                //친구탭 새로 그려질떄
-
-                selectAdapter.arrayList = (context as RoomCreateActivity).roomCreateInfo.friendList
-
-                (context as RoomCreateActivity).skipBtnHide(true)
-                notiHideAndSelectListShow(true)
-                snackBarCountChange(selectAdapter.arrayList.size)
-                snackBarDisplay(true)
-
-            } else if ((context as RoomCreateActivity).roomCreateInfo.friendList.size > 0) {
-                //친구탭 새로그려지는건 아닐떄 스낵바, 하이드체크
-                (context as RoomCreateActivity).skipBtnHide(true)
-                notiHideAndSelectListShow(true)
-                snackBarCountChange(selectAdapter.arrayList.size)
+            if ((context as RoomCreateActivity).roomCreateInfo.friendList.size > 0) {
                 snackBarDisplay(true)
             } else {
-                snackBarCountChange(selectAdapter.arrayList.size)
                 notiHideAndSelectListShow(false)
-                (context as RoomCreateActivity).skipBtnHide(false)
                 snackBarDisplay(false)
 
             }
-
-
-        } else {
-            isViewShown = false
         }
-
-
     }
 
     companion object {
@@ -185,6 +137,7 @@ class RoomCreateFriendFragment : Fragment(), RoomCreateContract.IRoomCreateFrien
         createRoomFriendSelectFriendNotiTv.text = "선택한 동행자 ${selectAdapter.itemCount}"
         if (selectAdapter.itemCount == 0) {
             snackBarDisplay(false)
+            notiHideAndSelectListShow(false)
         }
     }
 
@@ -260,18 +213,4 @@ class RoomCreateFriendFragment : Fragment(), RoomCreateContract.IRoomCreateFrien
                 .setDuration(300)
                 .startDelay = 0
     }
-
-    fun syncFriendList() {
-        val selectList = selectAdapter.arrayList
-        val searchList = searchAdapter.searchList
-
-        for (select in selectList) {
-            val index = searchList.indexOf(select)
-            searchList[index].isSelected = true
-        }
-
-
-    }
-
-
 }

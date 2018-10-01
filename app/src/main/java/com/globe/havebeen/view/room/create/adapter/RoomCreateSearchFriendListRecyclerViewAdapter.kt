@@ -73,7 +73,6 @@ class ContentViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     val profile: CircleImageView = view.findViewById(R.id.searchFriendContentProfileImage)
     val name: TextView = view.findViewById(R.id.searchFriendContentName)
-    val message: TextView = view.findViewById(R.id.searchFriendContentAddInfo)
     val checkBox: CheckBox = view.findViewById(R.id.searchFriendContentCheckBox)
 
     fun setView(user: User) {

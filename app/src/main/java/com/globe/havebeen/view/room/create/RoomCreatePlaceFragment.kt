@@ -38,12 +38,9 @@ class RoomCreatePlaceFragment : Fragment(), RoomCreateContract.IRoomCreatePlaceV
         if (isVisibleToUser && context != null) {
 
             if ((context as RoomCreateActivity).roomCreateInfo.cityList.size > 0 && adapater.getArrayList().size == 0) {
-                snackbar!!.setText("총 여행지 ${(context as RoomCreateActivity).roomCreateInfo.cityList.size}곳 / 확정")
                 (context as RoomCreateActivity).skipBtnHide(true)
-                adapater.setArrayList((context as RoomCreateActivity).roomCreateInfo.cityList)
                 snackbar!!.show()
             } else if ((context as RoomCreateActivity).roomCreateInfo.cityList.size > 0) {
-                snackbar!!.setText("총 여행지 ${(context as RoomCreateActivity).roomCreateInfo.cityList.size}곳 / 확정")
                 snackbar!!.show()
                 (context as RoomCreateActivity).skipBtnHide(true)
             } else {

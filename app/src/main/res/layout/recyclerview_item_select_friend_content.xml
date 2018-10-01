@@ -14,10 +14,10 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <de.hdodenhof.circleimageview.CircleImageView
-        app:layout_constraintEnd_toEndOf="parent"
-        android:src="@drawable/select_freind_x_icon"
         android:layout_width="15dp"
-        android:layout_height="15dp" />
+        android:layout_height="15dp"
+        android:src="@drawable/select_freind_x_icon"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/selectFriendContentName"
@@ -25,6 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
         android:ellipsize="end"
+        android:fontFamily="@font/nanum"
         android:gravity="center"
         android:singleLine="true"
         android:text="김혜자"

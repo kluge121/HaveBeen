@@ -1,5 +1,6 @@
 package com.globe.havebeen.view.room.create.custom
 
+import android.support.constraint.ConstraintLayout
 import android.support.design.widget.BaseTransientBottomBar
 import android.support.v4.view.ViewCompat
 import android.view.LayoutInflater
@@ -7,8 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.globe.havebeen.R
-import android.R.attr.onClick
-import android.support.constraint.ConstraintLayout
 
 
 /**

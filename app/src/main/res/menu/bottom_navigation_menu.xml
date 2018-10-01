@@ -2,20 +2,30 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_one"
+        android:id="@+id/bottom_tab1"
         android:enabled="true"
-        android:icon="@android:drawable/ic_dialog_info"
-        android:title=""
+        android:icon="@drawable/tab_home_icon"
+        android:title="홈"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/action_two"
-        android:icon="@android:drawable/ic_dialog_alert"
-        android:title=""
+        android:id="@+id/bottom_tab2"
+        android:icon="@drawable/tab_friend_gray_icon"
+        android:title="친구"
+
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/action_three"
+        android:id="@+id/bottom_tab3"
         android:enabled="true"
-        android:icon="@android:drawable/ic_dialog_email"
-        android:title=""
+        android:icon="@drawable/tab_alarm_gray_icon"
+        android:title="새소식"
         app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/bottom_tab4"
+        android:enabled="true"
+
+        android:icon="@drawable/tab_feed_gray_icon"
+        android:title="나의 피드"
+        app:showAsAction="ifRoom" />
+
 </menu>

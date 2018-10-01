@@ -111,7 +111,6 @@ dependencies {
     // tray - sharedpreference
     implementation 'net.grandcentrix.tray:tray:0.12.0'
 
-
     // location manager
     implementation "com.yayandroid:LocationManager:$location_manager_version"
     implementation "com.google.android.gms:play-services-location:$gms_version"
@@ -142,6 +141,7 @@ dependencies {
     //circle imageview
     implementation 'de.hdodenhof:circleimageview:2.2.0'
 
-    implementation 'org.parceler:parceler-api:1.1.11'
-    kapt 'org.parceler:parceler:1.1.11'
+    //blur engine
+    implementation 'fr.tvbarthel.blurdialogfragment:lib:2.2.0'
+
 }

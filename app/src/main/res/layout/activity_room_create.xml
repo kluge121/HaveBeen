@@ -86,7 +86,7 @@
         app:stpi_stepCount="4" />
 
 
-    <com.globe.havebeen.view.room.create.custom.NonSwipeableViewPager
+    <com.globe.havebeen.view.base.adapter.NonSwipeableViewPager
         android:id="@+id/roomCreateContainer"
         android:layout_width="match_parent"
         android:layout_height="0dp"

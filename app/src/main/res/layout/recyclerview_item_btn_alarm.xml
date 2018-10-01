@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/buttonAlarmDot"
+        android:layout_width="3dp"
+        android:layout_height="3dp"
+        android:src="@color/alarm_red"
+        app:layout_constraintStart_toStartOf="@id/buttonAlarmProfileIv"
+        app:layout_constraintTop_toTopOf="@+id/buttonAlarmProfileIv" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/buttonAlarmProfileIv"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="18dp"
+        android:src="@drawable/sample_everland"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/buttonAlarmTypeIv"
+        android:layout_width="17dp"
+        android:layout_height="17dp"
+        android:layout_marginStart="49dp"
+        android:layout_marginTop="28dp"
+        android:src="#7ed321"
+        app:civ_border_color="@color/white"
+        app:civ_border_width="1dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/buttonAlarmProfileIv" />
+
+    <TextView
+        android:id="@+id/buttonAlarmContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:lineSpacingExtra="4sp"
+        android:maxWidth="191dp"
+        android:text="@string/alarm_test_message"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/buttonAlarmProfileIv"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/buttonAlarmTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="3시간"
+        android:textColor="#c8c8c8"
+        android:textSize="8sp"
+        app:layout_constraintStart_toStartOf="@id/buttonAlarmContent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonAlarmContent" />
+
+
+    <Button
+        android:id="@+id/buttonAlarmBtn"
+        android:layout_width="70dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="18dp"
+        android:background="@drawable/alarm_item_background"
+        android:gravity="center"
+        android:text="바로가기"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/buttonAlarmDivinder"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:background="#f2f2f2"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+
+</android.support.constraint.ConstraintLayout>

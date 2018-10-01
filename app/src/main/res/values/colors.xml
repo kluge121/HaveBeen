@@ -33,5 +33,7 @@
 
     <color name="sky_text">#28abf1</color>
 
+    <color name="alarm_red">#e6364b</color>
+
 
 </resources>

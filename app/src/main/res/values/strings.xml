@@ -15,6 +15,7 @@
     <string name="summit">확인</string>
     <string name="cancel">취소</string>
     <string name="search">검색</string>
+    <string name="friend">친구</string>
 
 
     <!--회원가입 / 로그인-->
@@ -54,7 +55,23 @@
     <string name="final_fix">최종확인</string>
     <string name="test_schedul">2018년 9월 13일 화요일 - 9월 22일 목요일\n 9박 10일</string>
     <string name="test_user">김혜자님\n외 2명</string>
-    <string name="test_money">총 여행예산\n600,000원</string>
+    <string name="test_money">총 여행예산\n600,000,000원</string>
     <string name="create_room">여행스토리 생성하기</string>
+
+
+    <!--탭 제목-->
+    <string name="tab_journey">Journey</string>
+    <string name="tab_friend">Friends</string>
+    <string name="tab_feed">My feed</string>
+    <string name="tab_alarm">News</string>
+    <string name="doing_story">여행중인 스토리</string>
+    <string name="do_not_story">여행중인 스토리가 없습니다.</string>
+    <string name="plan_story">계획중인 스토리</string>
+    <string name="together_story">함께하는 스토리</string>
+    <string name="new_alarm">새로운 알림</string>
+    <string name="last_alarm">지난 알림</string>
+
+    <string name="alarm_test_message">노현우님이 10년지기 칭구들 여행 스\n토리에 회원님을 초대했습니다</string>
+    <string name="alarm_test_message2">박대수님이 2018가족여행의 계획 중 교통을\n최종선택하였습니다 다음 계획은 숙소입니다</string>
 
 </resources>

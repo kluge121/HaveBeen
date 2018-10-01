@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/friendDetailMainContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:elevation="16dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="@+id/friendDetailGuide1">
+
+    <ImageView
+        android:id="@+id/friendDetailCloseBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="22dp"
+        android:background="@color/transparent"
+        android:src="@drawable/ic_x"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/friendDetailProfileIv"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="58dp"
+        android:src="@drawable/sample_everland"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/friendDetailNameTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:text="배민수"
+        android:textColor="@color/greyish_brown"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/friendDetailProfileIv" />
+
+    <TextView
+        android:id="@+id/friendDetailPhoneTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:gravity="center_horizontal"
+        android:text="010-1234-5678"
+        android:textColor="#7d7d7d"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/friendDetailNameTv" />
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/friendDetailStoryCenterIv"
+        android:layout_width="62dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="56dp"
+        android:background="@drawable/together_story_circle_border"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/friendDetailPhoneTv" />
+
+    <TextView
+        android:id="@+id/friendDetailStoryCenterTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:letterSpacing="-0.06"
+        android:text="@string/together_story"
+        android:textColor="#000000"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/friendDetailStoryCenterIv" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/friendDetailStoryLeftIv"
+        android:layout_width="62dp"
+        android:layout_height="62dp"
+        android:layout_marginEnd="35dp"
+        android:background="@drawable/together_story_circle_border"
+        app:layout_constraintEnd_toStartOf="@id/friendDetailStoryCenterIv"
+        app:layout_constraintTop_toTopOf="@+id/friendDetailStoryCenterIv" />
+
+    <TextView
+        android:id="@+id/friendDetailStoryLeftTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:letterSpacing="-0.06"
+        android:text="@string/together_story"
+        android:textColor="#000000"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="@id/friendDetailStoryLeftIv"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/friendDetailStoryLeftIv"
+        app:layout_constraintTop_toBottomOf="@+id/friendDetailStoryCenterIv" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/friendDetailStoryRightIv"
+        android:layout_width="62dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="35dp"
+        android:background="@drawable/together_story_circle_border"
+        app:layout_constraintStart_toEndOf="@id/friendDetailStoryCenterIv"
+        app:layout_constraintTop_toTopOf="@+id/friendDetailStoryCenterIv" />
+
+
+    <TextView
+        android:id="@+id/friendDetailStoryRightTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:letterSpacing="-0.06"
+        android:text="@string/together_story"
+        android:textColor="#000000"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="@id/friendDetailStoryRightIv"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/friendDetailStoryRightIv"
+        app:layout_constraintTop_toBottomOf="@+id/friendDetailStoryCenterIv" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="122dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/friendDetailStoryCenterTv" />
+
+</android.support.constraint.ConstraintLayout>
+
+

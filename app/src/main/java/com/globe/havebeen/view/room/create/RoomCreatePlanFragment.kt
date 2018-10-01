@@ -47,12 +47,11 @@ class RoomCreatePlanFragment : Fragment(), RoomCreateContract.IRoomCreatePlanVie
             //스킵버튼 온오프는 캘린더 콜백에서 -> line 110
             if ((context as RoomCreateActivity).roomCreateInfo.startDate != null
                     && (context as RoomCreateActivity).roomCreateInfo.endDate != null) {
-                startDate = (context as RoomCreateActivity).roomCreateInfo.startDate!!
-                endDate = (context as RoomCreateActivity).roomCreateInfo.endDate!!
+                (context as RoomCreateActivity).skipBtnHide(true)
                 snackbar!!.setText(planMakeText(startDate, endDate))
-                createRoomCalendar.setSelectedDateRange(startDate, endDate)
                 snackbar!!.show()
             } else {
+                (context as RoomCreateActivity).skipBtnHide(false)
                 snackbar!!.dismiss()
             }
         } else if (snackbar != null && context != null) {
@@ -64,10 +63,7 @@ class RoomCreatePlanFragment : Fragment(), RoomCreateContract.IRoomCreatePlanVie
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_room_create_plan, container, false)
 
-
-
         with(view) {
-
             createRoomCalendar = findViewById(R.id.createRoomCalendar)
             createRoomCalendar.setFragmentForTvReset(this@RoomCreatePlanFragment)
             snackbar = CustomSnackbar.make(activity!!.findViewById(android.R.id.content), Snackbar.LENGTH_INDEFINITE)
@@ -78,8 +74,6 @@ class RoomCreatePlanFragment : Fragment(), RoomCreateContract.IRoomCreatePlanVie
                 (context as RoomCreateActivity).onNextPressed()
             })
 
-
-
             createRoomCalendar.setCalendarListener(object : CustomDateRangeCalendarView.CalendarListener {
                 override fun onTextViewReset() {
                     createRoomPlanStartTv.visibility = View.INVISIBLE
@@ -87,7 +81,6 @@ class RoomCreatePlanFragment : Fragment(), RoomCreateContract.IRoomCreatePlanVie
                     createRoomPlanStartDayTv.visibility = View.INVISIBLE
                     createRoomPlanEndDayTv.visibility = View.INVISIBLE
                 }
-
 
                 override fun onFirstDateSelected(startDate: Calendar) {
                     (activity as RoomCreateActivity).skipBtnHide(false)

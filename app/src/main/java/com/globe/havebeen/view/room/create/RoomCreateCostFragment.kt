@@ -36,17 +36,10 @@ class RoomCreateCostFragment : Fragment(), RoomCreateContract.IRoomCreateCostVie
             if ((context as RoomCreateActivity).tripDayPeriod != null) {
                 period = (context as RoomCreateActivity).tripDayPeriod
             }
-            if ((context as RoomCreateActivity).roomCreateInfo.cost != null && (context as RoomCreateActivity).roomCreateInfo.cost!! > 0) {
-                createRoomCostEditTextCost.setText("${(context as RoomCreateActivity).roomCreateInfo.cost}")
-                makeCostOfDayText((context as RoomCreateActivity).roomCreateInfo.cost!!)
-                snackbar.setText("예산 확정")
-                (context as RoomCreateActivity).skipBtnHide(true)
-                snackbar.show()
 
-            } else if (!createRoomCostEditTextCost.text.toString().isBlank()) {
-                makeCostOfDayText(createRoomCostEditTextCost.text.toString().replace(",", "").toInt())
-                snackbar.setText("예산 확정")
+            if (!createRoomCostEditTextCost.text.toString().isBlank()) {
                 (context as RoomCreateActivity).skipBtnHide(true)
+                snackbar.setText("예산 확정")
                 snackbar.show()
             } else {
                 (context as RoomCreateActivity).skipBtnHide(false)
@@ -56,7 +49,6 @@ class RoomCreateCostFragment : Fragment(), RoomCreateContract.IRoomCreateCostVie
             if (context != null) {
                 val inputMethodManager = (context as RoomCreateActivity).getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
                 inputMethodManager.hideSoftInputFromWindow(createRoomCostEditTextCost.getWindowToken(), 0)
-                snackbar.dismiss()
             }
 
 
@@ -84,9 +76,12 @@ class RoomCreateCostFragment : Fragment(), RoomCreateContract.IRoomCreateCostVie
 
             createRoomCostEditTextCost.addTextChangedListener(object : TextWatcher {
                 override fun afterTextChanged(p0: Editable?) {
+
                     if (p0.toString().isEmpty()) {
                         snackbar.dismiss()
                         dayCostShow(false)
+                    } else {
+                        (context as RoomCreateActivity).skipBtnHide(true)
                     }
 
                 }
@@ -106,6 +101,8 @@ class RoomCreateCostFragment : Fragment(), RoomCreateContract.IRoomCreateCostVie
                         createRoomCostEditTextCost.setSelection(tmpText.length)
                         snackbar.setText("예산 확정")
                         makeCostOfDayText(p0.toString().replace(",", "").toInt())
+                    } else {
+                        (context as RoomCreateActivity).skipBtnHide(false)
                     }
 
                 }

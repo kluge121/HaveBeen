@@ -14,19 +14,19 @@ interface MainContract {
     interface IMainView : BaseView<IMainPresenter>
 
     //룸 탭 프래그먼트
-    interface IBeforePresenter : BasePresenter
+    interface IHomePresenter : BasePresenter
 
-    interface IBeforeView : BaseView<IBeforePresenter>
+    interface IHomeView : BaseView<IHomePresenter>
 
     //친구 탭 프래그먼트
-    interface IDoingPresenter : BasePresenter
+    interface IFriendPresenter : BasePresenter
 
-    interface IDoingListView : BaseView<IDoingPresenter>
+    interface IFriendListView : BaseView<IFriendPresenter>
 
     //알람 탭 프래그먼트
-    interface IAfterPresenter : BasePresenter
+    interface IAlarmPresenter : BasePresenter
 
-    interface IAfterView : BaseView<IAfterPresenter>
+    interface IAlarmView : BaseView<IAlarmPresenter>
 
 
 }

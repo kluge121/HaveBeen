@@ -1,42 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:fitsSystemWindows="true">
 
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/mainAppbar"
+    <TextView
+        android:id="@+id/mainTabNameTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/nanum_bold"
+        android:text="@string/tab_journey"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/mainActivityProfileBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="67dp"
+        android:layout_marginTop="23dp"
+        android:background="@color/transparent"
+        android:src="@drawable/my_profile_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/mainActivitySettingBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="23dp"
+        android:background="@color/transparent"
+        android:src="@drawable/settings_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <android.support.constraint.Guideline
+        android:id="@+id/mainActivityGuide2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.0775" />
+
+
+    <com.globe.havebeen.view.base.adapter.NonSwipeableViewPager
+        android:id="@+id/mainActivityViewPager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/mainActivityGuide1"
+        app:layout_constraintTop_toBottomOf="@+id/mainActivityGuide2" />
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/mainToolba"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:layout_scrollFlags="scroll|enterAlwaysCollapsed" />
-    </android.support.design.widget.AppBarLayout>
-
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/mainViewpager"
+    <ImageView
+        android:id="@+id/mainBottomNavigationShadow"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:layout_height="10dp"
+        android:background="@drawable/shadow"
+        app:layout_constraintBottom_toTopOf="@+id/mainBottomNavigation" />
 
-    </android.support.v4.view.ViewPager>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/mainActivityGuide1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.9203" />
+
 
     <android.support.design.widget.BottomNavigationView
-        android:id="@+id/mainBottomNavigationView"
+        android:id="@+id/mainBottomNavigation"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:itemBackground="@color/white"
+        android:layout_height="0dp"
         app:itemIconTint="@color/bottom_navigation_selector"
-        app:itemTextColor="@color/gray"
-
-        app:layout_behavior="@string/bottom_sheet_behavior"
+        app:itemTextColor="@color/bottom_navigation_selector"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/mainActivityGuide1"
         app:menu="@menu/bottom_navigation_menu" />
 
 
-</android.support.design.widget.CoordinatorLayout>
+</android.support.constraint.ConstraintLayout>

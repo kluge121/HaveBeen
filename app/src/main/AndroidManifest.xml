@@ -63,17 +63,16 @@
                     android:scheme="https" />
             </intent-filter>
         </activity>
-
-
-        <activity android:name="com.globe.havebeen.view.main.MainActivity"></activity>
-
-        <activity android:name=".view.room.create.RoomCreateActivity">
+        <activity
+            android:name="com.globe.havebeen.view.main.MainActivity"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".view.room.create.RoomCreateActivity"></activity>
 
         <activity android:name=".view.room.create.RoomCitySearch" />
 
