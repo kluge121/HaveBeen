@@ -24,13 +24,11 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/arrowAlarmTypeIv"
-        android:layout_width="17dp"
-        android:layout_height="17dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="49dp"
         android:layout_marginTop="28dp"
-        android:src="#7ed321"
-        app:civ_border_color="@color/white"
-        app:civ_border_width="1dp"
+        android:src="@drawable/green_state"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/arrowAlarmProfileIv" />
 
@@ -64,22 +62,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="27dp"
-        android:background="null"
+        android:background="@null"
         android:src="@drawable/right_arrow"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
-        android:id="@+id/arrowAlarmDivinder"
+        android:id="@+id/arrowAlarmPartition"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="12dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="12dp"
         android:background="#f2f2f2"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/arrowAlarmTime" />
 
 
 </android.support.constraint.ConstraintLayout>

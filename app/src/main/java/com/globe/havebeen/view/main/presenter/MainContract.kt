@@ -11,6 +11,7 @@ interface MainContract {
 
     //메인 액티비티
     interface IMainPresenter : BasePresenter
+
     interface IMainView : BaseView<IMainPresenter>
 
     //룸 탭 프래그먼트
@@ -27,6 +28,12 @@ interface MainContract {
     interface IAlarmPresenter : BasePresenter
 
     interface IAlarmView : BaseView<IAlarmPresenter>
+
+
+    interface IFeedPresenter : BasePresenter
+    interface IFeedView : BaseView<IFeedPresenter> {
+        fun buttonTabChange(position: Int)
+    }
 
 
 }

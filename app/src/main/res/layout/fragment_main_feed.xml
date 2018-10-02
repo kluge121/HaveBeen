@@ -1,10 +1,196 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/tabFeedProfile"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:layout_marginTop="21dp"
+        android:src="@drawable/sample_everland"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
-        android:text="4"
+        android:id="@+id/tabFeedNameTv"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/nanum"
+        android:gravity="center_horizontal"
+        android:text="배민수"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tabFeedProfile" />
+
+    <TextView
+        android:id="@+id/tabFeedPhoneTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:gravity="center_horizontal"
+        android:text="010-5139-1656"
+        android:textColor="#7d7d7d"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tabFeedNameTv" />
+
+    <TextView
+        android:id="@+id/tabFeedCenterCountTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:gravity="center_horizontal"
+        android:text="45"
+        android:textColor="@color/aqua"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tabFeedPhoneTv" />
+
+    <TextView
+        android:id="@+id/tabFeedCenterNotiTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:gravity="center_horizontal"
+        android:text="@string/friend"
+        android:textColor="#c8c8c8"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tabFeedCenterCountTv" />
+
+
+    <TextView
+        android:id="@+id/tabFeedLeftCountTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="97dp"
+        android:gravity="center_horizontal"
+        android:text="3"
+        android:textColor="@color/aqua"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toStartOf="@id/tabFeedCenterCountTv"
+        app:layout_constraintTop_toTopOf="@+id/tabFeedCenterCountTv" />
+
+    <TextView
+        android:id="@+id/tabFeedLeftNotiTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:gravity="center_horizontal"
+        android:text="진행스토리"
+        android:textColor="#c8c8c8"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@id/tabFeedLeftCountTv"
+        app:layout_constraintStart_toStartOf="@id/tabFeedLeftCountTv"
+        app:layout_constraintTop_toBottomOf="@+id/tabFeedLeftCountTv" />
+
+    <TextView
+        android:id="@+id/tabFeedRightCountTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="97dp"
+        android:gravity="center_horizontal"
+        android:text="3"
+        android:textColor="@color/aqua"
+        android:textSize="25sp"
+        app:layout_constraintStart_toEndOf="@id/tabFeedCenterCountTv"
+        app:layout_constraintTop_toTopOf="@+id/tabFeedCenterCountTv" />
+
+    <TextView
+        android:id="@+id/tabFeedRightNotiTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:gravity="center_horizontal"
+        android:text="지난스토리"
+        android:textColor="#c8c8c8"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@id/tabFeedRightCountTv"
+        app:layout_constraintStart_toStartOf="@id/tabFeedRightCountTv"
+        app:layout_constraintTop_toBottomOf="@+id/tabFeedRightCountTv" />
+
+    <LinearLayout
+        android:id="@+id/tabFeedButtonContainer"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:layout_marginTop="35dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/tabFeedCenterNotiTv">
+
+        <RelativeLayout
+            android:id="@+id/tabFeedDoingStoryButtonContainer"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5">
+
+            <TextView
+                android:id="@+id/tabFeedDoingStoryTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/nanum_bold"
+                android:gravity="center_horizontal"
+                android:letterSpacing="0.1"
+                android:lineSpacingExtra="0sp"
+                android:text="진행중인 스토리"
+                android:textColor="@color/aqua"
+                android:textSize="12sp" />
+
+            <ImageView
+                android:id="@+id/tabFeedDoingStoryIv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/my_feed_bottom_line" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/tabFeedLastStoryButtonContainer"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5">
+
+            <TextView
+                android:id="@+id/tabFeedLastStoryTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/nanum_bold"
+                android:gravity="center_horizontal"
+                android:letterSpacing="0.1"
+                android:lineSpacingExtra="0sp"
+                android:text="지난 스토리"
+                android:textColor="@color/c8"
+                android:textSize="12sp" />
+
+            <ImageView
+                android:id="@+id/tabFeedLastStoryIv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/my_feed_bottom_line"
+                android:visibility="invisible" />
+        </RelativeLayout>
+    </LinearLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/tabFeedRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tabFeedButtonContainer" />
+
 </android.support.constraint.ConstraintLayout>

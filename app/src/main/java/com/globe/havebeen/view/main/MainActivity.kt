@@ -33,21 +33,29 @@ class MainActivity : AppCompatActivity() {
                 R.id.bottom_tab1 -> {
                     mainActivityViewPager.currentItem = 0
                     mainTabNameTv.text = getString(R.string.tab_journey)
+                    mainActivityProfileBtn.visibility = View.VISIBLE
+                    mainActivitySettingBtn.visibility = View.VISIBLE
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.bottom_tab2 -> {
                     mainTabNameTv.text = getString(R.string.tab_friend)
                     mainActivityViewPager.currentItem = 1
+                    mainActivityProfileBtn.visibility = View.INVISIBLE
+                    mainActivitySettingBtn.visibility = View.VISIBLE
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.bottom_tab3 -> {
                     mainTabNameTv.text = getString(R.string.tab_alarm)
                     mainActivityViewPager.currentItem = 2
+                    mainActivityProfileBtn.visibility = View.INVISIBLE
+                    mainActivitySettingBtn.visibility = View.INVISIBLE
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.bottom_tab4 -> {
                     mainTabNameTv.text = getString(R.string.tab_feed)
                     mainActivityViewPager.currentItem = 3
+                    mainActivityProfileBtn.visibility = View.INVISIBLE
+                    mainActivitySettingBtn.visibility = View.VISIBLE
                     return@setOnNavigationItemSelectedListener true
                 }
                 else -> {
@@ -62,7 +70,7 @@ class MainActivity : AppCompatActivity() {
             val displayMetrics = resources.displayMetrics
             layoutParams.height = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 20f, displayMetrics).toInt()
             layoutParams.width = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 20f, displayMetrics).toInt()
-            iconView.setLayoutParams(layoutParams)
+            iconView.layoutParams = layoutParams
 
 
         }

@@ -9,6 +9,9 @@
     <dimen name="design_bottom_navigation_text_size" tools:override="true">8sp</dimen>
     <dimen name="design_bottom_navigation_active_text_size" tools:override="true">8sp</dimen>
     <dimen name="design_bottom_navigation_height" tools:override="true">52dp</dimen>
+
+
+    <dimen name="bottom_sheet_dialog_height">539dp</dimen>
 </resources>
 
 
