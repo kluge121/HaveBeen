@@ -65,6 +65,7 @@
         </activity>
         <activity
             android:name="com.globe.havebeen.view.main.MainActivity"
+            android:theme="@style/MainAppTheme"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

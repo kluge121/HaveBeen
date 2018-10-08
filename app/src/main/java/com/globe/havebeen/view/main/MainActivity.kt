@@ -1,10 +1,14 @@
 package com.globe.havebeen.view.main
 
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.support.design.internal.BottomNavigationMenuView
 import android.support.v7.app.AppCompatActivity
 import android.util.TypedValue
 import android.view.View
+import android.view.Window
+import android.view.WindowManager
 import com.globe.havebeen.R
 import com.globe.havebeen.extension.disableShiftMode
 import com.globe.havebeen.view.main.adapter.MainBottomTabViewPagerAdapter
@@ -15,18 +19,35 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        requestWindowFeature(Window.FEATURE_NO_TITLE)
         setContentView(R.layout.activity_main)
+
+        if (Build.VERSION.SDK_INT in 19..20) {
+            setWindowFlag(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, true)
+        }
+        if (Build.VERSION.SDK_INT >= 19) {
+            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+        }
+        if (Build.VERSION.SDK_INT >= 21) {
+            setWindowFlag(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, false)
+            window.statusBarColor = Color.TRANSPARENT
+        }
+
         val adapter = MainBottomTabViewPagerAdapter(supportFragmentManager)
         mainActivityViewPager.adapter = adapter
         mainActivityViewPager.currentItem = 0
         mainActivityViewPager.offscreenPageLimit = 4
+
+
+
+
 
         initBottomNavigation()
 
 
     }
 
-    fun initBottomNavigation() {
+    private fun initBottomNavigation() {
         mainBottomNavigation.disableShiftMode()
         mainBottomNavigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
@@ -74,6 +95,17 @@ class MainActivity : AppCompatActivity() {
 
 
         }
+    }
+
+    private fun setWindowFlag(bits: Int, on: Boolean) {
+        val win = window
+        val winParams = win.attributes
+        if (on) {
+            winParams.flags = winParams.flags or bits
+        } else {
+            winParams.flags = winParams.flags and bits.inv()
+        }
+        win.attributes = winParams
     }
 
 

@@ -144,4 +144,7 @@ dependencies {
     //blur engine
     implementation 'fr.tvbarthel.blurdialogfragment:lib:2.2.0'
 
+    //status bar
+    implementation 'com.jaeger.statusbarutil:library:1.5.1'
+
 }
